@@ -16,6 +16,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
+        
         // Cargar animaciones
         val scaleRotateIn = AnimationUtils.loadAnimation(this, R.anim.scale_rotate_in)
         val scaleRotateOut = AnimationUtils.loadAnimation(this, R.anim.scale_rotate_out)
