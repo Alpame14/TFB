@@ -32,7 +32,7 @@
         app:strokeWidth="2dp" />
 
     <Button
-        android:id="@+id/btRegistrar2"
+        android:id="@+id/btIniciarSesion"
         android:layout_width="219dp"
         android:layout_height="88dp"
         android:backgroundTint="#D068E4"

@@ -47,6 +47,8 @@ dependencies {
 
     // Dependencias de Glide usando el catálogo de librerías
     implementation(libs.glide)
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.firebase.firestore.ktx)
     annotationProcessor(libs.glide.compiler)
 
     testImplementation(libs.junit)
