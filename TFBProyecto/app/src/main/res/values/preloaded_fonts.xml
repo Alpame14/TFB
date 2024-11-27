@@ -3,6 +3,8 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/alata</item>
         <item>@font/angkor</item>
+        <item>@font/architects_daughter</item>
+        <item>@font/bad_script</item>
         <item>@font/bungee</item>
     </array>
 </resources>

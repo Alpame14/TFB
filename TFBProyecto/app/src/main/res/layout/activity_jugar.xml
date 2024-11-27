@@ -12,9 +12,125 @@
         android:id="@+id/backgroundImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/background_juego"
-        android:scaleType="centerCrop"
+        android:layout_gravity="center"
         android:contentDescription="@string/background_image"
-        android:layout_gravity="center" />
+        android:scaleType="centerCrop"
+        android:src="@drawable/background_juego"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <TextView
+        android:id="@+id/tvNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/angkor"
+        android:text="Nombre"
+        android:textColor="#141212"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.427"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.078" />
+
+    <TextView
+        android:id="@+id/tvNombrePers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/architects_daughter"
+        android:text="Mari Carmen"
+        android:textColor="#141212"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.757"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.077" />
+
+    <TextView
+        android:id="@+id/tvAlergiaPers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/architects_daughter"
+        android:text="Frutos secos"
+        android:textColor="#141212"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.757"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.115" />
+
+    <TextView
+        android:id="@+id/tvDietaPers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/architects_daughter"
+        android:text="Omnívora"
+        android:textColor="#141212"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.723"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.15" />
+
+    <TextView
+        android:id="@+id/tvAlergia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/angkor"
+        android:text="Alergias"
+        android:textColor="#141212"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.436"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.117" />
+
+    <TextView
+        android:id="@+id/tvDieta"
+        android:layout_width="46dp"
+        android:layout_height="19dp"
+        android:fontFamily="@font/angkor"
+        android:text="Dieta"
+        android:textColor="#141212"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.402"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.153" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="97dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.079"
+        app:srcCompat="@drawable/pers4" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="152dp"
+        android:layout_height="234dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/backgroundImage"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.561"
+        app:srcCompat="@drawable/be_zumonaranja" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
