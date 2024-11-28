@@ -12,8 +12,8 @@ class Usuario(val nombre: String, val email: String, val provider: ProviderType,
         fun crearUsuarioInvitado(): Usuario {
             return Usuario("Invitado", "", ProviderType.NINGUNO, 0)
         }
-        fun crearUsuario(usuario: String, email: String, provider: ProviderType, score: Int): Usuario {
-            return Usuario(usuario, email, provider, score)
+        fun crearUsuario(email: String,provider: ProviderType,nombre: String, maxscore: Int): Usuario {
+            return Usuario(nombre, email, provider, maxscore)
         }
 
 

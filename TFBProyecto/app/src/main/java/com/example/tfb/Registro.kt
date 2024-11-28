@@ -1,5 +1,6 @@
 package com.example.tfb
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
@@ -163,7 +164,7 @@ class Registro : AppCompatActivity() {
             }
             .setNegativeButton("Cancelar") { dialog, _ -> dialog.dismiss() }
             .setNeutralButton("Boton de entrar con google") { _, _ ->
-                val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken()
+                /*val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken()
                 val googleSignInClient = GoogleSignIn.getClient(
                     this,
                     GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -174,11 +175,12 @@ class Registro : AppCompatActivity() {
 
                 val signInIntent = googleSignInClient.signInIntent
                 startActivityForResult(signInIntent, RC_SIGN_IN)
-
+*/
             }
             .show()
     }
 
+    /*
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -192,7 +194,7 @@ class Registro : AppCompatActivity() {
             }
         }
     }
-
+    */
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         FirebaseAuth.getInstance().signInWithCredential(credential)
@@ -206,15 +208,18 @@ class Registro : AppCompatActivity() {
     }
 
 
-    private fun showHome(email: String, provider: ProviderType){
-//puede que haya que cambiar el main a este para que inicie aqui
-        val homeIntent = Intent(this,MainActivity::class.java).apply{
-            putExtra("email",email)
-            putExtra("provider",provider.name)
-        }
+    private fun showHome(email: String, provider: ProviderType, username: String = "Invitado") {
+        // Guardar en SharedPreferences
+        val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
+        prefs.putString("email", email)
+        prefs.putString("provider", provider.name)
+        prefs.putString("nombre", username) // Guarda el nombre correctamente
+        prefs.apply()
+
+        // Navegar a MainActivity
+        val homeIntent = Intent(this, MainActivity::class.java)
         startActivity(homeIntent)
-
-
+        finish()
     }
 
 

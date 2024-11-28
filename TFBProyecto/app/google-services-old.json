@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "784896784879",
-    "project_id": "tfb1-cd979",
-    "storage_bucket": "tfb1-cd979.firebasestorage.app"
+    "project_number": "104103382931",
+    "project_id": "timeforbrunch-2c0d2",
+    "storage_bucket": "timeforbrunch-2c0d2.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:784896784879:android:0b08e2bc868ba74b691e1a",
+        "mobilesdk_app_id": "1:104103382931:android:03fd25b5ee1f603b586266",
         "android_client_info": {
-          "package_name": "com.example.tfb"
+          "package_name": "com.example.timeforbrunch"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAEsupjVqh5fXr_ltokxRZnI62FLlpdtRs"
+          "current_key": "AIzaSyDaCHV48UX_J5MrwJb5achdz4u8XeF-Xo0"
         }
       ],
       "services": {

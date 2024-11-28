@@ -33,39 +33,34 @@ enum class Categoria{
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // Inflar el layout usando View Binding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         val email = ""
-        var usuario = ""
-        var provider = ProviderType.NINGUNO.toString()
+        val usuario = ""
+        val provider = ProviderType.NINGUNO.toString()
 
-
-        guardasesion(email,provider,usuario)
+        guardasesion(email, provider, usuario)
         session()
-       
+
         // Cargar animaciones
         val scaleRotateIn = AnimationUtils.loadAnimation(this, R.anim.scale_rotate_in)
         val scaleRotateOut = AnimationUtils.loadAnimation(this, R.anim.scale_rotate_out)
 
         // Añadir clic y animación a ivPerfil
         binding.ivPerfil.setOnClickListener {
-            // Inicia la animación
             it.startAnimation(scaleRotateIn)
             it.startAnimation(scaleRotateOut)
 
-            // Espera a que termine la animación antes de iniciar la actividad
             it.postDelayed({
-
                 if (Usuario.currentUsuario!!.provider == ProviderType.NINGUNO) {
                     val intent = Intent(this, Registro::class.java)
                     startActivity(intent)
-                }else{
+                } else {
                     val intent = Intent(this, Cuenta::class.java)
                     startActivity(intent)
                 }
@@ -99,32 +94,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun guardasesion(email: String, provider: String, usuario: String) {
-
-
-        //guarda los datos
-        val prefs = getSharedPreferences(getString(R.string.prefs_file),Context.MODE_PRIVATE).edit()
-        prefs.putString("email",email)
-        prefs.putString("provider",provider)
-        prefs.putString("usuario",usuario)
+        val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
+        prefs.putString("email", email)
+        prefs.putString("provider", provider)
+        prefs.putString("usuario", usuario)
         prefs.apply()
     }
 
-    //metodo que mira si la cuenta ya estaba abierta o no
     private fun session() {
         val prefs: SharedPreferences = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
-        val nombre: String? = prefs.getString("nombre",null)
-        val email: String? = prefs.getString("email",null)
-        val provider: String? = prefs.getString("provider",null)
+        val nombre: String? = prefs.getString("nombre", null)
+        val email: String? = prefs.getString("email", null)
+        val provider: String? = prefs.getString("provider", null)
 
-        if (email != null && provider != null && nombre != null){
-
-            Usuario.currentUsuario = Usuario.crearUsuario(nombre,email,ProviderType.valueOf(provider),0)
-        }
-        else{
+        if (email != null && provider != null && nombre != null) {
+            Usuario.currentUsuario = Usuario.crearUsuario(
+                nombre = nombre,
+                email = email,
+                provider = ProviderType.valueOf(provider),
+                maxscore = 0 // Cambia esto si tienes un valor para maxscore
+            )
+        } else {
             Usuario.currentUsuario = Usuario.crearUsuarioInvitado()
         }
-
     }
-
-}
-// Esto es un cambio de prueba
+}}
