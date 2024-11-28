@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.tfb.databinding.ActivityCuentaBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class Cuenta : AppCompatActivity() {
     private lateinit var binding: ActivityCuentaBinding
@@ -28,6 +29,7 @@ class Cuenta : AppCompatActivity() {
 
 
         binding.logoutbtn.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
             borraDatos()
 
 
