@@ -41,8 +41,12 @@ class MainActivity : AppCompatActivity() {
         // Inflar el layout usando View Binding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val email = ""
+        var usuario = ""
+        var provider = ProviderType.NINGUNO.toString()
 
 
+        guardasesion(email,provider,usuario)
         session()
        
         // Cargar animaciones
@@ -92,6 +96,17 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }, scaleRotateIn.duration)
         }
+    }
+
+    private fun guardasesion(email: String, provider: String, usuario: String) {
+
+
+        //guarda los datos
+        val prefs = getSharedPreferences(getString(R.string.prefs_file),Context.MODE_PRIVATE).edit()
+        prefs.putString("email",email)
+        prefs.putString("provider",provider)
+        prefs.putString("usuario",usuario)
+        prefs.apply()
     }
 
     //metodo que mira si la cuenta ya estaba abierta o no

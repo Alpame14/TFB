@@ -117,6 +117,8 @@ class Registro : AppCompatActivity() {
             .show()
     }
 
+
+
     private fun popup_login() {
         // Crear el diseño
         val layout = LinearLayout(this).apply {
@@ -161,10 +163,11 @@ class Registro : AppCompatActivity() {
             }
             .setNegativeButton("Cancelar") { dialog, _ -> dialog.dismiss() }
             .setNeutralButton("Boton de entrar con google") { _, _ ->
+                val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken()
                 val googleSignInClient = GoogleSignIn.getClient(
                     this,
                     GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                        .requestIdToken(getString(R.string.default_web_client_id))
+                        .requestIdToken(getString(R.string.web_client_id))
                         .requestEmail()
                         .build()
                 )
