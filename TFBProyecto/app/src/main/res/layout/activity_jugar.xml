@@ -19,6 +19,34 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp" />
 
+    <Button
+        android:id="@+id/btInicio"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:backgroundTint="#D068E4"
+        android:fontFamily="@font/bungee"
+        android:paddingLeft="2dp"
+        android:paddingTop="2dp"
+        android:paddingRight="2dp"
+        android:paddingBottom="2dp"
+        android:shadowColor="#000000"
+        android:shadowDx="10"
+        android:shadowDy="10"
+        android:shadowRadius="10"
+        android:text="inicio"
+        android:textColor="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textSize="10sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.317"
+        app:strokeColor="#00E9E3E3"
+        app:strokeWidth="2dp" />
+
     <TextView
         android:id="@+id/tvNombre"
         android:layout_width="wrap_content"
@@ -188,6 +216,21 @@
             app:layout_columnWeight="1"
             app:layout_rowWeight="1" />
     </androidx.gridlayout.widget.GridLayout>
+
+    <TextView
+        android:id="@+id/tvCrono"
+        android:layout_width="65dp"
+        android:layout_height="37dp"
+        android:fontFamily="@font/bungee"
+        android:text="02:00"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/backgroundImage"
+        app:layout_constraintHorizontal_bias="0.962"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.26" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
