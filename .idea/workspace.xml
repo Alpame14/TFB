@@ -10,6 +10,16 @@
           <theme>@style/Theme.TFB</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/activity_main.xml">
+        <config>
+          <theme>@style/Theme.TFB</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/activity_ranking.xml">
+        <config>
+          <theme>@style/Theme.TFB</theme>
+        </config>
+      </layout>
     </layouts>
   </component>
   <component name="AutoImportSettings">
@@ -17,15 +27,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bb555af-5b2d-4a80-9d1d-a79e347bbf7c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/google-services-old.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Registro.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Registro.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TFBProyecto/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Ranking.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Ranking.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +59,24 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="TFB" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="TFB" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="TFB" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="TFB" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="android" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -96,7 +117,6 @@
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "android.gradle.sync.needed": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",

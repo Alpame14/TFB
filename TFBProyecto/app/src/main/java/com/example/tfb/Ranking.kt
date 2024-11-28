@@ -31,9 +31,6 @@ class Ranking : AppCompatActivity() {
         // Ordenar jugadores por puntuación (de mayor a menor)
         players.sortByDescending { it.score }
 
-        // Referencia al TableLayout
-        val tableLayout: TableLayout = findViewById(R.id.tableLayout)
-
         // Agregar filas con los datos del ranking
         for ((index, player) in players.withIndex()) {
             val tableRow = TableRow(this)
@@ -67,8 +64,6 @@ class Ranking : AppCompatActivity() {
             tableRow.addView(nameView)
             tableRow.addView(scoreView)
 
-            // Añadir la fila a la tabla
-            tableLayout.addView(tableRow)
         }
     }
 

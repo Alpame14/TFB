@@ -43,6 +43,8 @@ class MainActivity : AppCompatActivity() {
         val email = ""
         val usuario = ""
         val provider = ProviderType.NINGUNO.toString()
+        binding.tv.text = Usuario.currentUsuario?.nombre
+        binding.tv2.text = Usuario.currentUsuario?.email
 
         guardasesion(email, provider, usuario)
         session()
@@ -118,4 +120,4 @@ class MainActivity : AppCompatActivity() {
             Usuario.currentUsuario = Usuario.crearUsuarioInvitado()
         }
     }
-}}
+}
