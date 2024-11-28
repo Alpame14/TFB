@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.firebase.auth.ktx)
     implementation(libs.firebase.firestore.ktx)
+    implementation(libs.androidx.gridlayout)
     annotationProcessor(libs.glide.compiler)
 
     testImplementation(libs.junit)

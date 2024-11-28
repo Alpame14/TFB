@@ -110,7 +110,7 @@
         app:layout_constraintVertical_bias="0.153" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/ivFotoFicha"
         android:layout_width="97dp"
         android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -122,7 +122,7 @@
         app:srcCompat="@drawable/pers4" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/ivBebida"
         android:layout_width="152dp"
         android:layout_height="234dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -132,5 +132,62 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.561"
         app:srcCompat="@drawable/be_zumonaranja" />
+
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/gridPlato"
+        android:layout_width="181dp"
+        android:layout_height="190dp"
+        android:padding="16dp"
+        app:columnCount="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/backgroundImage"
+        app:layout_constraintHorizontal_bias="0.669"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.582"
+        app:rowCount="2"
+        app:useDefaultMargins="true">
+
+        <!-- Imagen 1 -->
+        <ImageView
+            android:id="@+id/imPlato1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/al_pan"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+        <!-- Imagen 2 -->
+        <ImageView
+            android:id="@+id/imPlato2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/al_mermelada"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+        <!-- Imagen 3 -->
+        <ImageView
+            android:id="@+id/imPlato3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/al_platano"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+        <!-- Imagen 4 -->
+        <ImageView
+            android:id="@+id/imPlato4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/al_queso"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+    </androidx.gridlayout.widget.GridLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
