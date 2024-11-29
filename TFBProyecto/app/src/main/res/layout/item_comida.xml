@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="140dp">
 
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="#EDE5E5"
+        android:backgroundTint="#EDE7DF"
         android:orientation="horizontal"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,16 +27,25 @@
 
         <!-- Información de texto -->
         <LinearLayout
-            android:layout_width="310dp"
-            android:layout_height="78dp"
+            android:layout_width="298dp"
+            android:layout_height="93dp"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:background="#EB3939"
+            android:backgroundTint="#D269E6"
+            android:orientation="vertical"
+            android:paddingHorizontal="5dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp">
 
             <!-- Nombre de la comida -->
             <TextView
                 android:id="@+id/tvComida"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/angkor"
                 android:text="Nombre de la comida"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -46,6 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Alergeno"
+                android:textColor="#000000"
                 android:textSize="14sp" />
 
             <!-- Categoría -->
@@ -54,6 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Categoría"
+                android:textColor="#0D0D0D"
                 android:textSize="14sp" />
         </LinearLayout>
     </LinearLayout>
