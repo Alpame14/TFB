@@ -6,6 +6,9 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.RecyclerView
 import com.example.tfb.databinding.ActivityMainBinding
 
 
@@ -14,20 +17,27 @@ enum class ProviderType{
 }
 enum class Alergeno{
     Huevo,
-    Lacteo,
+    Lacteos,
     Frutos_Secos,
     Gluten,
     Pescado,
     Soja,
-    Crustaceo,
+    Crustaceos,
     Moluscos,
     Ninguno
 }
-enum class Categoria{
+enum class Restricciones{
     Vegetariano,
     Vegano,
-    Frugívoro,
-    Omnívoro
+    Ninguna
+}
+enum class Categoria{
+    Verdura,
+    Fruta,
+    Lacteo,
+    Cereal,
+    Origen_Animal,
+    Bebida
 }
 
 class MainActivity : AppCompatActivity() {
@@ -39,7 +49,11 @@ class MainActivity : AppCompatActivity() {
         // Inflar el layout usando View Binding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
         val email = ""
         val usuario = ""
         val provider = ProviderType.NINGUNO.toString()
@@ -59,7 +73,7 @@ class MainActivity : AppCompatActivity() {
             it.startAnimation(scaleRotateOut)
 
             it.postDelayed({
-                if (Usuario.currentUsuario!!.provider == ProviderType.NINGUNO) {
+                if (Usuario.currentUsuario!!.provider == ProviderType.NINGUNO && Usuario.currentUsuario!!.nombre == "Invitado") {
                     val intent = Intent(this, Registro::class.java)
                     startActivity(intent)
                 } else {
@@ -120,4 +134,9 @@ class MainActivity : AppCompatActivity() {
             Usuario.currentUsuario = Usuario.crearUsuarioInvitado()
         }
     }
+
+
+
+
+
 }
