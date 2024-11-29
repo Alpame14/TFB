@@ -1,72 +1,53 @@
 package com.example.tfb
 
-import android.graphics.Color
 import android.os.Bundle
-import android.widget.TableLayout
-import android.widget.TableRow
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import kotlin.random.Random
+import com.example.tfb.R
 
 class Ranking : AppCompatActivity() {
+
+    data class RankingEntry(val position: Int, val username: String, val score: Int)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ranking)
 
-        // Lista de jugadores ficticios
-        val players = mutableListOf<Player>(
-            Player("Alice", Random.nextInt(0, 10000)),
-            Player("Bob", Random.nextInt(0, 10000)),
-            Player("Charlie", Random.nextInt(0, 10000)),
-            Player("Diana", Random.nextInt(0, 10000)),
-            Player("Edward", Random.nextInt(0, 10000)),
-            Player("Fiona", Random.nextInt(0, 10000)),
-            Player("George", Random.nextInt(0, 10000)),
-            Player("Hannah", Random.nextInt(0, 10000)),
-            Player("Irene", Random.nextInt(0, 10000)),
-            Player("Jack", Random.nextInt(0, 10000))
+        val rankingList = listOf(
+            RankingEntry(1, "SkyGamerX", 2000),
+            RankingEntry(2, "PixelMaster", 1900),
+            RankingEntry(3, "ShadowHunter", 1800),
+            RankingEntry(4, "BlazeStorm", 1700),
+            RankingEntry(5, "CodeWizard", 1600),
+            RankingEntry(6, "LunaTide", 1500),
+            RankingEntry(7, "CyberNova", 1400),
+            RankingEntry(8, "PhantomRush", 1300),
+            RankingEntry(9, "AquaFlare", 1200),
+            RankingEntry(10, "InfernoCrush", 1100)
         )
 
-        // Ordenar jugadores por puntuación (de mayor a menor)
-        players.sortByDescending { it.score }
+        val rankingContainer = findViewById<LinearLayout>(R.id.llRankingContainer)
 
-        // Agregar filas con los datos del ranking
-        for ((index, player) in players.withIndex()) {
-            val tableRow = TableRow(this)
+        for (entry in rankingList) {
+            val row = layoutInflater.inflate(R.layout.ranking_row, rankingContainer, false)
 
-            // Posición
-            val positionView = TextView(this).apply {
-                text = (index + 1).toString()
-                setPadding(8, 8, 8, 8)
-                gravity = android.view.Gravity.CENTER
-                setTextColor(Color.WHITE)
-            }
+            val ivRank = row.findViewById<ImageView>(R.id.ivRank)
+            val rankImageId = resources.getIdentifier(
+                "rank_%02d".format(entry.position),
+                "drawable",
+                packageName
+            )
+            ivRank.setImageResource(rankImageId)
 
-            // Nombre
-            val nameView = TextView(this).apply {
-                text = player.name
-                setPadding(8, 8, 8, 8)
-                gravity = android.view.Gravity.CENTER
-                setTextColor(Color.WHITE)
-            }
+            val tvUsername = row.findViewById<TextView>(R.id.tvUsername)
+            tvUsername.text = entry.username
 
-            // Puntuación
-            val scoreView = TextView(this).apply {
-                text = player.score.toString()
-                setPadding(8, 8, 8, 8)
-                gravity = android.view.Gravity.CENTER
-                setTextColor(Color.WHITE)
-            }
+            val tvScore = row.findViewById<TextView>(R.id.tvScore)
+            tvScore.text = entry.score.toString()
 
-            // Añadir vistas a la fila
-            tableRow.addView(positionView)
-            tableRow.addView(nameView)
-            tableRow.addView(scoreView)
-
+            rankingContainer.addView(row)
         }
     }
-
-    // Clase para representar a un jugador
-    data class Player(val name: String, val score: Int)
 }
