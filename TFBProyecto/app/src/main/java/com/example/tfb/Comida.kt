@@ -1,6 +1,7 @@
 package com.example.tfb
 
 import java.io.Serializable
+import com.example.tfb.Enumerados.*
 
 data class Comida(
     val nombre: String,

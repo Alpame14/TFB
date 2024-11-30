@@ -5,40 +5,12 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.recyclerview.widget.RecyclerView
 import com.example.tfb.databinding.ActivityMainBinding
-
-
-enum class ProviderType{
-    NINGUNO, BASIC, GOOGLE
-}
-enum class Alergeno{
-    Huevo,
-    Lacteos,
-    Frutos_Secos,
-    Gluten,
-    Pescado,
-    Soja,
-    Crustaceos,
-    Moluscos,
-    Ninguno
-}
-enum class Restricciones{
-    Vegetariano,
-    Vegano,
-    Ninguna
-}
-enum class Categoria{
-    Verdura,
-    Fruta,
-    Lacteo,
-    Cereal,
-    Origen_Animal,
-    Bebida
-}
+import com.example.tfb.Enumerados.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -54,14 +26,13 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val email = ""
-        val usuario = ""
-        val provider = ProviderType.NINGUNO.toString()
-        binding.tv.text = Usuario.currentUsuario?.nombre
-        binding.tv2.text = Usuario.currentUsuario?.email
 
-        guardasesion(email, provider, usuario)
+
+
+
         session()
+        binding.tv.text = Usuario.currentUsuario?.nombre ?: "Usuario no disponible"
+        binding.tv2.text = Usuario.currentUsuario?.email ?: "Email no disponible"
 
         // Cargar animaciones
         val scaleRotateIn = AnimationUtils.loadAnimation(this, R.anim.scale_rotate_in)
@@ -71,9 +42,8 @@ class MainActivity : AppCompatActivity() {
         binding.ivPerfil.setOnClickListener {
             it.startAnimation(scaleRotateIn)
             it.startAnimation(scaleRotateOut)
-
             it.postDelayed({
-                if (Usuario.currentUsuario!!.provider == ProviderType.NINGUNO && Usuario.currentUsuario!!.nombre == "Invitado") {
+                if (Usuario.currentUsuario != null && Usuario.currentUsuario!!.provider == ProviderType.NINGUNO) {
                     val intent = Intent(this, Registro::class.java)
                     startActivity(intent)
                 } else {
@@ -101,21 +71,24 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.ivJugar.setOnClickListener {
+
             it.startAnimation(scaleRotateIn)
             it.postDelayed({
+
+                if (Usuario.currentUsuario?.provider == ProviderType.NINGUNO) {
+                    Toast.makeText(
+                        this,"Jugando sin registrar, la puntuación se guardará en local",Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(this, "La puntuación se guardará en el usuario ${Usuario.currentUsuario?.nombre}",Toast.LENGTH_LONG).show()
+                }
+
                 val intent = Intent(this, Jugar::class.java)
                 startActivity(intent)
             }, scaleRotateIn.duration)
         }
     }
 
-    private fun guardasesion(email: String, provider: String, usuario: String) {
-        val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
-        prefs.putString("email", email)
-        prefs.putString("provider", provider)
-        prefs.putString("usuario", usuario)
-        prefs.apply()
-    }
+
 
     private fun session() {
         val prefs: SharedPreferences = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
@@ -134,9 +107,6 @@ class MainActivity : AppCompatActivity() {
             Usuario.currentUsuario = Usuario.crearUsuarioInvitado()
         }
     }
-
-
-
 
 
 }

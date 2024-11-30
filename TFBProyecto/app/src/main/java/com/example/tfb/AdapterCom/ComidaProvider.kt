@@ -1,7 +1,6 @@
 package com.example.tfb.AdapterCom
 
-import com.example.tfb.Alergeno
-import com.example.tfb.Categoria
+import com.example.tfb.Enumerados.*
 import com.example.tfb.Comida
 import com.example.tfb.R
 

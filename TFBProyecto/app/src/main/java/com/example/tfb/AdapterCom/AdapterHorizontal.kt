@@ -1,23 +1,22 @@
 package com.example.tfb.AdapterCom
 
-import android.util.Log
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tfb.Comida
 import com.example.tfb.R
 
-class ComidaAdapter(private val listaComidas:List<Comida>) : RecyclerView.Adapter<ComidaViewHolder>() {
+class AdapterHorizontal(private val listaComidas:List<Comida>) : RecyclerView.Adapter<ViewHolderHorizontal>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComidaViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderHorizontal {
 
         val layoutInflater = LayoutInflater.from(parent.context)
-        return ComidaViewHolder(layoutInflater.inflate(R.layout.item_comida,parent,false))
+        return ViewHolderHorizontal(layoutInflater.inflate(R.layout.itemvertical,parent,false))
     }
 
 
-    override fun onBindViewHolder(holder: ComidaViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolderHorizontal, position: Int) {
 
         val item = listaComidas[position]
         holder.render(item)

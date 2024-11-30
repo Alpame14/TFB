@@ -3,8 +3,9 @@ package com.example.tfb
 /*
 
  */
+import com.example.tfb.Enumerados.ProviderType
 
-class Usuario(val nombre: String, val email: String, val provider: ProviderType, val maxscore: Int){
+class Usuario(val nombre: String, val email: String, val provider: Enumerados.ProviderType, val maxscore: Int){
 
     companion object {
         // Static variables or functions can be defined here

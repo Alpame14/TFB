@@ -5,6 +5,31 @@
       <config />
     </shared>
     <layouts>
+      <layout url="file://$PROJECT_DIR$/TFBProyecto/app/src/main/res/font/alata.xml">
+        <config>
+          <theme>@style/Theme.TFB</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/TFBProyecto/app/src/main/res/font/angkor.xml">
+        <config>
+          <theme>@style/Theme.TFB</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/TFBProyecto/app/src/main/res/font/architects_daughter.xml">
+        <config>
+          <theme>@style/Theme.TFB</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/TFBProyecto/app/src/main/res/font/bad_script.xml">
+        <config>
+          <theme>@style/Theme.TFB</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/TFBProyecto/app/src/main/res/font/bungee.xml">
+        <config>
+          <theme>@style/Theme.TFB</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/activity_ayuda.xml">
         <config>
           <theme>@style/Theme.TFB</theme>
@@ -40,6 +65,11 @@
           <theme>@style/Theme.TFB</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/itemvertical.xml">
+        <config>
+          <theme>@style/Theme.TFB</theme>
+        </config>
+      </layout>
     </layouts>
   </component>
   <component name="AutoImportSettings">
@@ -47,14 +77,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bb555af-5b2d-4a80-9d1d-a79e347bbf7c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Comida.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/AdapterCom/ComidaAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/AdapterCom/ComidaAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/AdapterCom/ComidaProvider.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/AdapterCom/ComidaProvider.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/AdapterCom/ComidaViewHolder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/AdapterCom/ComidaViewHolder.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Ayuda.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Ayuda.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Comidas.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Comida.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Comida.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Cuenta.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Cuenta.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Jugar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Jugar.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Registro.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Registro.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Usuario.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Usuario.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/activity_ayuda.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/activity_ayuda.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/activity_jugar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/activity_jugar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/activity_ranking.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/activity_ranking.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +104,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\sergi\.android\avd\Medium_Phone_API_35.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\sergi\.android\avd\Pixel_9_API_35.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -114,7 +154,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Kotlin Object" />
+        <option value="resourceFile" />
         <option value="layoutResourceFile" />
+        <option value="Class" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -159,7 +202,10 @@
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "C:/Users/sergi/TFB/TFBProyecto/app/src/main/java",
-    "last_opened_file_path": "C:/Users/sergi/AndroidStudioProjects/encuesta",
+    "last_opened_file_path": "C:/Users/sergi/OneDrive/Escritorio/FP/PMDM/24-25_CON_ALUMNOS-main/2425_FIREBASE",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "experimental"
   }
 }]]></component>
@@ -173,6 +219,12 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\sergi\proyecto\TFB\TFBProyecto\app" />
+    </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.example.tfb.AdapterCom" />
+    </key>
+    <key name="android.template.-2017022331">
+      <recent name="com.example.tfb" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
       <recent name="com.example.tfb.AdapterUsu" />

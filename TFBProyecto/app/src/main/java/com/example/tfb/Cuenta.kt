@@ -1,6 +1,7 @@
 package com.example.tfb
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -8,14 +9,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.tfb.databinding.ActivityCuentaBinding
+import com.example.tfb.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class Cuenta : AppCompatActivity() {
     private lateinit var binding: ActivityCuentaBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Inflar el layout usando View Binding
         binding = ActivityCuentaBinding.inflate(layoutInflater)
-        enableEdgeToEdge()
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -23,27 +27,31 @@ class Cuenta : AppCompatActivity() {
             insets
         }
 
-        binding.usuariotxt.text = Usuario.currentUsuario?.nombre
-        binding.emailtxt.text = Usuario.currentUsuario?.email
-        binding.scoretxt.text = Usuario.currentUsuario?.maxscore.toString()
+        // Muestra los datos del usuario actual
+        binding.usuariotxt.text = Usuario.currentUsuario?.nombre ?: ""
+        binding.emailtxt.text = Usuario.currentUsuario?.email ?: ""
+        binding.scoretxt.text = Usuario.currentUsuario?.maxscore?.toString() ?: ""
 
-
+        // Acción de cerrar sesión
         binding.logoutbtn.setOnClickListener {
+            // Cerrar sesión en Firebase
             FirebaseAuth.getInstance().signOut()
+            // Borrar datos de SharedPreferences
             borraDatos()
-
-
+            // Redirigir a la pantalla principal
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()  // Cierra la actividad actual para que no regrese al hacer back
         }
-
-
     }
 
-
     private fun borraDatos() {
-        val prefs: SharedPreferences.Editor = getSharedPreferences(getString(R.string.prefs_file),
-            Context.MODE_PRIVATE).edit()
-        prefs.clear()
+        // Borrar datos de SharedPreferences
+        val prefs: SharedPreferences.Editor = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
+        prefs.clear()  // Borra todas las preferencias
         prefs.apply()
-        Usuario.crearUsuarioInvitado()
+
+        // Restaurar al usuario invitado
+        Usuario.currentUsuario = Usuario.crearUsuarioInvitado()
     }
 }

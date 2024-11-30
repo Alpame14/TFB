@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">TFB</string>
     <string name="background_image">Imagen de fondo</string>
-    <string  name="web_client_id"> 784896784879-0o9gvegc3ba2g9ms1puhh8pa4ubq9d5g.apps.googleusercontent.com </string>
+    <string name="default_web_client_id"> 104103382931-pie8n9t990ddv458391t579p63q4egu2.apps.googleusercontent.com </string>
     <string name="prefs_file">com.TFB.PREFERENCE_FILE_KEY</string>
     <string name="ranking_number">Número del ranking</string>
 

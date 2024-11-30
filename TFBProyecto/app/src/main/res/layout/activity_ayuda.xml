@@ -10,21 +10,34 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvAyuda"
-        android:layout_width="302dp"
-        android:layout_height="567dp"
+        android:layout_width="288dp"
+        android:layout_height="500dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.695" />
+        app:layout_constraintVertical_bias="0.497" />
 
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="347dp"
         android:layout_height="49dp"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/rvAyuda"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnDetalle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvAyuda"
+        app:layout_constraintVertical_bias="0.367" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

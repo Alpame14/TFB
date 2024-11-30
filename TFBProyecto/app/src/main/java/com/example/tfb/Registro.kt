@@ -1,12 +1,15 @@
 package com.example.tfb
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
+import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tfb.databinding.ActivityRegistroBinding
@@ -16,15 +19,37 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 
+import com.example.tfb.Enumerados.ProviderType
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+
 class Registro : AppCompatActivity() {
     private lateinit var binding: ActivityRegistroBinding
+    private val RC_SIGN_IN = 9001
+
+    private val googleSignInLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+                try {
+                    val account = task.getResult(ApiException::class.java)
+                    firebaseAuthWithGoogle(account!!)
+                } catch (e: ApiException) {
+                    Toast.makeText(this, "Error al iniciar sesión con Google", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Inflar el layout usando View Binding
         binding = ActivityRegistroBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        if (FirebaseAuth.getInstance().currentUser != null) {
+            val currentUser = FirebaseAuth.getInstance().currentUser!!
+            showHome(currentUser.email ?: "", ProviderType.BASIC)
+        }
 
         binding.btRegistrar.setOnClickListener {
             popup_regis()
@@ -56,9 +81,17 @@ class Registro : AppCompatActivity() {
             inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
         }
 
+        val googleButton = Button(this).apply {
+            text = "Registrarse con Google"
+            setOnClickListener {
+                signUpWithGoogle()
+            }
+        }
+
         layout.addView(username)
         layout.addView(email)
         layout.addView(cont)
+        layout.addView(googleButton)
 
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Registrar")
@@ -82,13 +115,13 @@ class Registro : AppCompatActivity() {
                                 FirebaseFirestore.getInstance().collection("users").document(userId)
                                     .set(userMap)
                                     .addOnSuccessListener {
-                                        // Guardar en SharedPreferences
                                         val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
                                         prefs.putString("email", emailText)
                                         prefs.putString("provider", ProviderType.BASIC.name)
                                         prefs.putString("nombre", usernameText)
                                         prefs.apply()
 
+                                        // Asignar los valores a Usuario.currentUsuario
                                         Usuario.currentUsuario = Usuario.crearUsuario(
                                             nombre = usernameText,
                                             email = emailText,
@@ -129,12 +162,24 @@ class Registro : AppCompatActivity() {
             inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
         }
 
+        val googleButton = Button(this).apply {
+            text = "Iniciar sesión con Google"
+            setOnClickListener {
+                val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.default_web_client_id))
+                    .requestEmail()
+                    .build()
+                val googleClient = GoogleSignIn.getClient((this, googleConf)
+
+            }
+        }
+
         layout.addView(email)
         layout.addView(cont)
+        layout.addView(googleButton)
 
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Iniciar sesión")
-        builder.setMessage("Ingresa tu correo y contraseña")
+            .setMessage("Ingresa tu correo y contraseña")
             .setView(layout)
             .setPositiveButton("Iniciar sesión") { _, _ ->
                 val emailText = email.text.toString().trim()
@@ -144,20 +189,35 @@ class Registro : AppCompatActivity() {
                     FirebaseAuth.getInstance().signInWithEmailAndPassword(emailText, contText)
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
-                                // Guardar en SharedPreferences
-                                val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
-                                prefs.putString("email", emailText)
-                                prefs.putString("provider", ProviderType.BASIC.name)
-                                prefs.apply()
+                                val userId = task.result?.user?.uid ?: ""
+                                FirebaseFirestore.getInstance().collection("users").document(userId)
+                                    .get()
+                                    .addOnSuccessListener { document ->
+                                        if (document.exists()) {
+                                            val nombre = document.getString("username") ?: "Usuario sin nombre"
 
-                                Usuario.currentUsuario = Usuario.crearUsuario(
-                                    nombre = "Nombre de usuario", // Cambiar si tienes el nombre
-                                    email = emailText,
-                                    provider = ProviderType.BASIC,
-                                    maxscore = 0
-                                )
+                                            val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
+                                            prefs.putString("email", emailText)
+                                            prefs.putString("provider", ProviderType.BASIC.name)
+                                            prefs.putString("nombre", nombre)
+                                            prefs.apply()
 
-                                showHome(emailText, ProviderType.BASIC)
+                                            // Asignar los valores a Usuario.currentUsuario
+                                            Usuario.currentUsuario = Usuario.crearUsuario(
+                                                nombre = nombre,
+                                                email = emailText,
+                                                provider = ProviderType.BASIC,
+                                                maxscore = 0
+                                            )
+
+                                            showHome(emailText, ProviderType.BASIC)
+                                        } else {
+                                            Toast.makeText(this, "No se encontró información del usuario.", Toast.LENGTH_SHORT).show()
+                                        }
+                                    }
+                                    .addOnFailureListener { e ->
+                                        Toast.makeText(this, "Error al obtener datos: ${e.message}", Toast.LENGTH_SHORT).show()
+                                    }
                             } else {
                                 Toast.makeText(this, "Error: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                             }
@@ -170,12 +230,73 @@ class Registro : AppCompatActivity() {
             .show()
     }
 
+    private fun signUpWithGoogle() {
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+
+        val googleSignInClient = GoogleSignIn.getClient(this, gso)
+
+        val signInIntent = googleSignInClient.signInIntent
+        googleSignInLauncher.launch(signInIntent)
+    }
+
+    private fun signInWithGoogle() {
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+
+        val googleSignInClient = GoogleSignIn.getClient(this, gso)
+
+        val signInIntent = googleSignInClient.signInIntent
+        googleSignInLauncher.launch(signInIntent)
+    }
+
+    private fun firebaseAuthWithGoogle(account: GoogleSignInAccount) {
+        val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+        FirebaseAuth.getInstance().signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val user = FirebaseAuth.getInstance().currentUser
+                    if (user != null) {
+                        val email = user.email ?: ""
+                        val nombre = user.displayName ?: "Usuario sin nombre"
+
+                        // Guardar en SharedPreferences
+                        val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
+                        prefs.putString("email", email)
+                        prefs.putString("provider", ProviderType.GOOGLE.name)
+                        prefs.putString("nombre", nombre)
+                        prefs.apply()
+
+                        // Asignar valores a Usuario.currentUsuario
+                        Usuario.currentUsuario = Usuario.crearUsuario(
+                            nombre = nombre,
+                            email = email,
+                            provider = ProviderType.GOOGLE,
+                            maxscore = 0 // Puedes personalizar este valor
+                        )
+
+                        // Ir a la pantalla principal
+                        showHome(email, ProviderType.GOOGLE)
+                    }
+                } else {
+                    Toast.makeText(this, "Autenticación fallida: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+
+
+
     private fun showHome(email: String, provider: ProviderType) {
-        val homeIntent = Intent(this, MainActivity::class.java).apply {
+        // Lógica para llevar al usuario a la pantalla principal
+        val intent = Intent(this, MainActivity::class.java).apply {
             putExtra("email", email)
             putExtra("provider", provider.name)
         }
-        startActivity(homeIntent)
+        startActivity(intent)
+        finish()  // Opcional, dependiendo de si quieres cerrar esta actividad
     }
 }
-
