@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         session()
         binding.tv.text = Usuario.currentUsuario?.nombre ?: "Usuario no disponible"
         binding.tv2.text = Usuario.currentUsuario?.email ?: "Email no disponible"
+        binding.tv3.text = Usuario.currentUsuario?.provider.toString()
 
         // Cargar animaciones
         val scaleRotateIn = AnimationUtils.loadAnimation(this, R.anim.scale_rotate_in)
@@ -97,12 +98,15 @@ class MainActivity : AppCompatActivity() {
         val provider: String? = prefs.getString("provider", null)
 
         if (email != null && provider != null && nombre != null) {
+
+
             Usuario.currentUsuario = Usuario.crearUsuario(
                 nombre = nombre,
                 email = email,
                 provider = ProviderType.valueOf(provider),
-                maxscore = 0 // Cambia esto si tienes un valor para maxscore
-            )
+                maxscore = 0)
+
+
         } else {
             Usuario.currentUsuario = Usuario.crearUsuarioInvitado()
         }
