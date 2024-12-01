@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".Jugar">
 
     <ImageView
@@ -21,13 +21,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvJuego"
-        android:layout_width="405dp"
-        android:layout_height="192dp"
+        android:layout_width="393dp"
+        android:layout_height="171dp"
+        android:background="#EBE6DE"
+        android:backgroundTint="#EBE6DE"
         app:layout_constraintBottom_toBottomOf="@+id/backgroundImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gridPlato"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.709" />
 
     <Button
         android:id="@+id/btInicio"
@@ -43,7 +45,7 @@
         android:shadowDx="10"
         android:shadowDy="10"
         android:shadowRadius="10"
-        android:text="inicio"
+        android:text="@string/start"
         android:textColor="#FFFFFF"
         android:textColorLink="#FFFFFF"
         android:textSize="10sp"
@@ -55,29 +57,31 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.317"
         app:strokeColor="#00E9E3E3"
-        app:strokeWidth="2dp" />
+        app:strokeWidth="2dp"
+        tools:text="Inicio" />
 
     <TextView
         android:id="@+id/tvNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/angkor"
-        android:text="Nombre"
+        android:text="@string/name"
         android:textColor="#141212"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.427"
+        app:layout_constraintHorizontal_bias="0.406"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.078" />
+        app:layout_constraintVertical_bias="0.078"
+        tools:text="Nombre" />
 
     <TextView
         android:id="@+id/tvNombrePers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/architects_daughter"
-        android:text="Mari Carmen"
+        android:text="@string/sample_name"
         android:textColor="#141212"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -85,14 +89,15 @@
         app:layout_constraintHorizontal_bias="0.757"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.077" />
+        app:layout_constraintVertical_bias="0.077"
+        tools:text="Mari Carmen" />
 
     <TextView
         android:id="@+id/tvAlergiaPers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/architects_daughter"
-        android:text="Frutos secos"
+        android:text="@string/sample_allergy"
         android:textColor="#141212"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -100,14 +105,15 @@
         app:layout_constraintHorizontal_bias="0.757"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.115" />
+        app:layout_constraintVertical_bias="0.115"
+        tools:text="Frutos secos" />
 
     <TextView
         android:id="@+id/tvDietaPers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/architects_daughter"
-        android:text="Omnívora"
+        android:text="@string/sample_diet"
         android:textColor="#141212"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -115,29 +121,31 @@
         app:layout_constraintHorizontal_bias="0.723"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.15" />
+        app:layout_constraintVertical_bias="0.15"
+        tools:text="Omnívora" />
 
     <TextView
         android:id="@+id/tvAlergia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/angkor"
-        android:text="Alergias"
+        android:text="@string/allergies"
         android:textColor="#141212"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.436"
+        app:layout_constraintHorizontal_bias="0.414"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.117" />
+        app:layout_constraintVertical_bias="0.116"
+        tools:text="Alergias" />
 
     <TextView
         android:id="@+id/tvDieta"
-        android:layout_width="46dp"
+        android:layout_width="64dp"
         android:layout_height="19dp"
         android:fontFamily="@font/angkor"
-        android:text="Dieta"
+        android:text="@string/diet"
         android:textColor="#141212"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -145,7 +153,8 @@
         app:layout_constraintHorizontal_bias="0.402"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.153" />
+        app:layout_constraintVertical_bias="0.153"
+        tools:text="Dieta" />
 
     <ImageView
         android:id="@+id/ivFotoFicha"
@@ -153,22 +162,22 @@
         android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintHorizontal_bias="0.092"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.079"
+        app:layout_constraintVertical_bias="0.068"
         app:srcCompat="@drawable/pers4" />
 
     <ImageView
         android:id="@+id/ivBebida"
-        android:layout_width="152dp"
-        android:layout_height="234dp"
+        android:layout_width="136dp"
+        android:layout_height="232dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/backgroundImage"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.561"
+        app:layout_constraintVertical_bias="0.567"
         app:srcCompat="@drawable/be_zumonaranja" />
 
     <androidx.gridlayout.widget.GridLayout
@@ -232,7 +241,7 @@
         android:layout_width="65dp"
         android:layout_height="37dp"
         android:fontFamily="@font/bungee"
-        android:text="02:00"
+        android:text="@string/sample_timer"
         android:textColor="#FFFFFF"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -240,7 +249,7 @@
         app:layout_constraintHorizontal_bias="0.962"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.26" />
-
+        app:layout_constraintVertical_bias="0.26"
+        tools:text="02:00" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

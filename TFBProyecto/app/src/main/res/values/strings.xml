@@ -1,8 +1,34 @@
 <resources>
+    <!-- Claves existentes -->
     <string name="app_name">TFB</string>
-    <string name="background_image">Imagen de fondo</string>
-    <string name="default_web_client_id"> 104103382931-pie8n9t990ddv458391t579p63q4egu2.apps.googleusercontent.com </string>
+    <string name="default_web_client_id">104103382931-pie8n9t990ddv458391t579p63q4egu2.apps.googleusercontent.com</string>
     <string name="prefs_file">com.TFB.PREFERENCE_FILE_KEY</string>
+    <string name="background_image">Imagen de fondo</string>
     <string name="ranking_number">Número del ranking</string>
+    <string name="ayuda">AYUDA</string>
+    <string name="ranking">RANKING</string>
+    <string name="jugar">JUGAR</string>
+    <string name="perfil">PERFIL</string>
+    <string name="button_detail">Detalle</string>
+    <string name="logout">Cerrar sesión</string>
+    <string name="user">Usuario</string>
+    <string name="high_score">Punt. Max.</string>
+    <string name="email">Email</string>
+    <string name="start">Inicio</string>
+    <string name="name">Nombre</string>
+    <string name="allergies">Alergias</string>
+    <string name="diet">Dieta</string>
+    <string name="your_score">Tu puntuación</string>
+    <string name="default_score">0</string>
+    <string name="register">Registrarse</string>
+    <string name="login">Iniciar Sesión</string>
 
+    <!-- Claves faltantes -->
+    <string name="sample_name">Mari Carmen</string>
+    <string name="sample_allergy">Pescado</string>
+    <string name="sample_diet">Vegana</string>
+    <string name="sample_timer">02:00</string>
+    <string name="textview1">Ejemplo Texto 1</string>
+    <string name="textview2">Ejemplo Texto 2</string>
+    <string name="textview3">Ejemplo Texto 3</string>
 </resources>

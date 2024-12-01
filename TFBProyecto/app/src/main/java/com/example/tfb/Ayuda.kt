@@ -55,12 +55,6 @@ class Ayuda : AppCompatActivity() {
                 iniciaRecycler(listaComida)
             }
         }
-        binding.btnDetalle.setOnClickListener {
-
-
-
-
-        }
 
 
 

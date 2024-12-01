@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -18,7 +19,8 @@
         android:shadowDx="10"
         android:shadowDy="10"
         android:shadowRadius="10"
-        android:text="Registrarse"
+        android:text="@string/register"
+        tools:text="Registrarse"
         android:textColor="#FFFFFF"
         android:textColorLink="#FFFFFF"
         android:textSize="20sp"
@@ -41,7 +43,8 @@
         android:shadowDx="10"
         android:shadowDy="10"
         android:shadowRadius="10"
-        android:text="Iniciar Sesión"
+        android:text="@string/login"
+        tools:text="Iniciar Sesión"
         android:textColor="#FFFFFF"
         android:textColorLink="#FFFFFF"
         android:textSize="20sp"
