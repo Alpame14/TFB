@@ -3,6 +3,7 @@ package com.example.tfb
 /*
 
  */
+import android.provider.ContactsContract.CommonDataKinds.Photo
 import com.example.tfb.Enumerados.ProviderType
 
 data class Usuario(val nombre: String, val email: String, val provider: ProviderType, val maxscore: Int) {
