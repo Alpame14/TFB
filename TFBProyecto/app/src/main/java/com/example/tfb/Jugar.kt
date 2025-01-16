@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tfb.AdapterCom.JuegoAdapter
 import com.example.tfb.AdapterCom.ComidaProvider.Companion.listaComida
 import com.example.tfb.databinding.ActivityJugarBinding
+import kotlin.random.Random
+import com.example.tfb.Enumerados.*
 
 class Jugar : AppCompatActivity() {
     private lateinit var binding: ActivityJugarBinding
@@ -32,6 +34,8 @@ class Jugar : AppCompatActivity() {
             startCountdownTimer()
             binding.btInicio.isEnabled = false
             binding.btInicio.alpha = 0.5f
+
+            juego()
         }
 
 
@@ -59,11 +63,55 @@ class Jugar : AppCompatActivity() {
                     Toast.makeText(this, "Plato vaciado", Toast.LENGTH_SHORT).show()
                 }
             }
+            binding.ivBebida.setOnClickListener {
+                // Eliminar la imagen de la bebida al hacer clic
+                binding.ivBebida.setImageResource(0)
+                Toast.makeText(this, "Bebida vaciada", Toast.LENGTH_SHORT).show()
+            }
 
             Toast.makeText(this, "Seleccionaste: ${comida.nombre}", Toast.LENGTH_SHORT).show()
         }
         binding.rvJuego.adapter = adapter
 
+        binding.enviarbtn.setOnClickListener {
+
+
+            generaCliente()
+            reiniciaTablero()
+
+        }
+
+    }
+
+    private fun juego() {
+
+    }
+
+    // Función para generar un cliente aleatorio
+    fun generaCliente(): Cliente {
+        /*
+
+         posiblemente esto tendria que meterse en firebase
+         */
+        val nombres = listOf(
+            "Carlos", "Ana", "Pedro", "Lucía", "María", "Luis", "Elena", "Javier",
+            "Sofía", "Manuel", "Isabel", "David", "Carmen", "Pablo", "Paula", "Sergio",
+            "Marta", "Adrián", "Raquel", "Daniel", "Alba", "Jorge", "Cristina", "Álvaro",
+            "Laura", "Rubén", "Patricia", "Diego", "Natalia", "Víctor", "Sara", "Guillermo",
+            "Andrea", "Ricardo", "Beatriz", "José", "Silvia", "Fernando")
+
+        val nombreAleatorio = nombres.random() // Elegir un nombre aleatorio del array
+        val alergenoAleatorio = Alergeno.values().random() // Elegir un alérgeno aleatorio del enum
+        val dietaAleatoria = Dietas.values().random() // Elegir una dieta aleatoria del enum
+
+        val fotoAleatoria = Random.nextInt(1, 100) // ID ficticio de drawable
+
+        return Cliente(
+            nombre = nombreAleatorio,
+            alergeno = alergenoAleatorio,
+            dieta = dietaAleatoria,
+            foto = fotoAleatoria
+        )
     }
 
     private fun reiniciaTablero() {
