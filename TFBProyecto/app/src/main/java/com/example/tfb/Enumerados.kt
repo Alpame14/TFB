@@ -16,13 +16,15 @@ class Enumerados {
         Moluscos,
         Ninguno
     }
-    enum class Restricciones{
+    enum class Dietas{
         Vegetariano,
         Vegano,
+        alta_en_proteina,
+        baja_en_grasas,
         Ninguna
     }
     enum class Categoria{
-                        Ninguno,
+        Ninguno,
         Verdura,
         Fruta,
         Lacteo,

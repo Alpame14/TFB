@@ -60,22 +60,12 @@
           <theme>@style/Theme.TFB</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/activity_splash.xml">
-        <config>
-          <theme>@style/Theme.TFB</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/item_comida.xml">
         <config>
           <theme>@style/Theme.TFB</theme>
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/itemvertical.xml">
-        <config>
-          <theme>@style/Theme.TFB</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/ranking_row.xml">
         <config>
           <theme>@style/Theme.TFB</theme>
         </config>
@@ -87,8 +77,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bb555af-5b2d-4a80-9d1d-a79e347bbf7c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/AdapterCom/AdapterHorizontal.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/AdapterCom/JuegoAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/AdapterCom/ViewHolderHorizontal.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/AdapterCom/JuegoViewHolder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Enumerados.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Enumerados.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Jugar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Jugar.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/StorageFoto.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/StorageFoto.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/activity_jugar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/activity_jugar.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +96,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Alumno\.android\avd\Pixel_6_API_35.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\sergi\.android\avd\Pixel_9_API_35.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -125,6 +123,19 @@
                 <item name="TFB" type="f1a62948:ProjectNode" />
                 <item name="app" type="2d1252cf:ModuleNode" />
               </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="TFB" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="TFB" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="android" type="c8890929:TasksNode$1" />
+              </path>
             </expand>
             <select />
           </tree_state>
@@ -140,7 +151,6 @@
         <option value="layoutResourceFile" />
         <option value="Class" />
         <option value="Kotlin Class" />
-        <option value="valueResourceFile" />
       </list>
     </option>
   </component>
@@ -155,8 +165,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Alpame14/TFB.git&quot;,
-    &quot;accountId&quot;: &quot;7bd2d68c-994b-4957-adb1-343d657424d4&quot;
+    &quot;url&quot;: &quot;https://github.com/Alpame14/TFB&quot;,
+    &quot;accountId&quot;: &quot;3f909bf4-bf91-4242-9f8a-1aaeae64258b&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -179,23 +189,16 @@
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "android.gradle.sync.needed": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "C:/Users/sergi/TFB/TFBProyecto/app/src/main/java",
-    "last_opened_file_path": "C:/Users/Alumno/TFB",
+    "last_opened_file_path": "C:/Users/sergi/OneDrive/Escritorio/FP/PMDM/24-25_CON_ALUMNOS-main/2425_FIREBASE",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.17",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "experimental"
-  },
-  "keyToStringList": {
-    "kotlin-gradle-user-dirs": [
-      "C:\\Users\\Alumno\\.gradle"
-    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -210,6 +213,7 @@
       <recent name="C:\Users\sergi\proyecto\TFB\TFBProyecto\app" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.example.tfb" />
       <recent name="com.example.tfb.AdapterCom" />
     </key>
     <key name="android.template.-2017022331">
@@ -234,6 +238,8 @@
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
+      <option name="RESTORE_ENABLED" value="false" />
+      <option name="RESTORE_FILE" value="" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
       <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
@@ -325,5 +331,16 @@
       <updated>1732730585459</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/AdapterCom/JuegoViewHolder.kt</url>
+          <line>22</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

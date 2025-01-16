@@ -2,22 +2,30 @@ package com.example.tfb
 
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.tfb.AdapterCom.AdapterHorizontal
-import com.example.tfb.AdapterCom.ComidaAdapter
+import com.example.tfb.AdapterCom.JuegoAdapter
 import com.example.tfb.AdapterCom.ComidaProvider.Companion.listaComida
 import com.example.tfb.databinding.ActivityJugarBinding
 
 class Jugar : AppCompatActivity() {
     private lateinit var binding: ActivityJugarBinding
+    private lateinit var adapter: JuegoAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityJugarBinding.inflate(layoutInflater)
+        val platos = listOf(
+            binding.imPlato1,
+            binding.imPlato2,
+            binding.imPlato3,
+            binding.imPlato4
+        )
         setContentView(binding.root)
-
         binding.btInicio.isEnabled = true
+
+        reiniciaTablero()
 
         // Configurar el botón para iniciar el cronómetro
         binding.btInicio.setOnClickListener {
@@ -28,15 +36,49 @@ class Jugar : AppCompatActivity() {
 
 
         iniciaRecycler(listaComida)
+        // Configura el adaptador con un listener para actualizar las imágenes
+        adapter = JuegoAdapter(listaComida) { comida ->
+            // Actualiza las imágenes con el objeto seleccionado
+            if (comida.bebida) {
+                binding.ivBebida.setImageResource(comida.foto)
+            } else {
+                val platos = listOf(binding.imPlato1, binding.imPlato2, binding.imPlato3, binding.imPlato4)
+                for (plato in platos) {
+                    if (plato.drawable == null) {
+                        plato.setImageResource(comida.foto)
+                        break
+                    }
+                }
+            }
 
+            // Asignar onClickListener a cada plato
+            for (plato in platos) {
+                plato.setOnClickListener {
+                    // Eliminar la imagen del plato al hacer clic
+                    plato.setImageResource(0)
+                    Toast.makeText(this, "Plato vaciado", Toast.LENGTH_SHORT).show()
+                }
+            }
 
+            Toast.makeText(this, "Seleccionaste: ${comida.nombre}", Toast.LENGTH_SHORT).show()
+        }
+        binding.rvJuego.adapter = adapter
 
     }
+
+    private fun reiniciaTablero() {
+        binding.ivBebida.setImageResource(0) // Limpia la imagen
+        binding.imPlato1.setImageResource(0)
+        binding.imPlato2.setImageResource(0)
+        binding.imPlato3.setImageResource(0)
+        binding.imPlato4.setImageResource(0)
+    }
+
+
 
     private fun iniciaRecycler(lista: List<Comida>) {
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.rvJuego.layoutManager = layoutManager
-        binding.rvJuego.adapter = AdapterHorizontal(lista)
     }
 
     private fun startCountdownTimer() {
