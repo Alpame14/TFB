@@ -2,6 +2,7 @@ package com.example.tfb
 
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,18 +27,42 @@ class Jugar : AppCompatActivity() {
         )
         setContentView(binding.root)
         binding.btInicio.isEnabled = true
+        binding.enviarbtn.isEnabled = false
+        binding.enviarbtn.alpha = 0.5f
 
-        reiniciaTablero()
+        reiniciaTablero(platos)
 
         // Configurar el botón para iniciar el cronómetro
         binding.btInicio.setOnClickListener {
             startCountdownTimer()
             binding.btInicio.isEnabled = false
             binding.btInicio.alpha = 0.5f
+            binding.enviarbtn.isEnabled = true
+            binding.enviarbtn.alpha = 1.0f
 
-            juego()
+            juego(platos)
+
+
         }
 
+
+
+        binding.enviarbtn.setOnClickListener {
+
+            calculapuntuacion();
+            generaCliente()
+            reiniciaTablero(platos)
+
+
+        }
+
+    }
+
+    private fun calculapuntuacion() {
+
+    }
+
+    private fun juego(platos: List<ImageView>) {
 
         iniciaRecycler(listaComida)
         // Configura el adaptador con un listener para actualizar las imágenes
@@ -73,24 +98,11 @@ class Jugar : AppCompatActivity() {
         }
         binding.rvJuego.adapter = adapter
 
-        binding.enviarbtn.setOnClickListener {
-
-
-            generaCliente()
-            reiniciaTablero()
-
-        }
-
-    }
-
-    private fun juego() {
-
     }
 
     // Función para generar un cliente aleatorio
     fun generaCliente(): Cliente {
         /*
-
          posiblemente esto tendria que meterse en firebase
          */
         val nombres = listOf(
@@ -114,12 +126,11 @@ class Jugar : AppCompatActivity() {
         )
     }
 
-    private fun reiniciaTablero() {
+    private fun reiniciaTablero(platos: List<ImageView>) {
         binding.ivBebida.setImageResource(0) // Limpia la imagen
-        binding.imPlato1.setImageResource(0)
-        binding.imPlato2.setImageResource(0)
-        binding.imPlato3.setImageResource(0)
-        binding.imPlato4.setImageResource(0)
+        for (plato in platos) {
+            plato.setImageResource(0)
+        }
     }
 
 
