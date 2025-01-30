@@ -19,8 +19,6 @@ class Enumerados {
     enum class Dietas{
         Vegetariano,
         Vegano,
-        alta_en_proteina,
-        baja_en_grasas,
         Ninguna
     }
     enum class Categoria{

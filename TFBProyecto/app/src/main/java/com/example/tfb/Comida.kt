@@ -8,12 +8,11 @@ data class Comida(
     val alergeno: Alergeno,
     val categoria: Categoria,
     val bebida: Boolean,
-    val proteinas: Double,       // Cantidad de proteínas en gramos
-    val grasas: Double,          // Cantidad de grasas en gramos
+    val proteinas: Double,       // Cantidad de proteínas en gramos 8,2
+    val grasas: Double,          // Cantidad de grasas en gramos 20%-30%
     val minerales: Double,       // Cantidad de minerales en gramos
     val vitaminas: Double,       // Cantidad de vitaminas en miligramos
-    val fibra: Double,           // Cantidad de fibra en gramos
-    val calorias: Int,          // Calorías totales en kcal
+    val calorias: Int,          // Calorías totales en kcal 350-400
     val foto: Int // ID del recurso drawable
 ) : Serializable
 

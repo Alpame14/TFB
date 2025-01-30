@@ -9,7 +9,8 @@ import com.example.tfb.R
 
 class JuegoAdapter(
     private val listaComidas: List<Comida>,
-    private val onItemClick: (Comida) -> Unit // Callback para manejar clics
+    private val onClickListener: (Comida) -> Unit, // Callback para manejar clics
+    private val onClickDelete:(Int) -> Unit
 ) : RecyclerView.Adapter<JuegoViewHolder>() {
 
 
@@ -23,12 +24,7 @@ class JuegoAdapter(
     override fun onBindViewHolder(holder: JuegoViewHolder, position: Int) {
 
         val item = listaComidas[position]
-        holder.render(item)
-
-        // Manejar el clic usando el callback
-        holder.itemView.setOnClickListener {
-            onItemClick(item)
-        }
+        holder.render(item,onClickListener,onClickDelete)
 
     }
 
