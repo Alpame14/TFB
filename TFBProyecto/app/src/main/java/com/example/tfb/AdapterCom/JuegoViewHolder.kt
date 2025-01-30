@@ -5,17 +5,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tfb.Comida
 import com.example.tfb.databinding.ItemverticalBinding
 
-class JuegoViewHolder(view: View): RecyclerView.ViewHolder(view) {
-
+class JuegoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val binding = ItemverticalBinding.bind(view)
 
-
-    fun render(comida: Comida, onClickListener: (Comida) -> Unit, onClickDelete: (Int) -> Unit) {
-
-        binding.ivComida.setOnClickListener{onClickDelete(adapterPosition)}
+    fun render(comida: Comida, position: Int, onClickListener: (Int) -> Unit) {
         binding.ivComida.setImageResource(comida.foto)
         binding.tvComida.text = comida.nombre
 
+        // Cuando se haga clic en la imagen, se eliminará el objeto de la RecyclerView
+        binding.ivComida.setOnClickListener {
+            onClickListener(position)
+        }
     }
+}
 
-    }
