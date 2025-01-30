@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Tema general de la app (ajústalo si es necesario) -->
+    <style name="Theme.MyApp" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Personaliza más estilos aquí si es necesario -->
+    </style>
+
+    <!-- Estilo personalizado para el Spinner -->
+    <style name="SpinnerPopupTheme" parent="Theme.MaterialComponents.Light">
+        <item name="android:popupBackground">@android:color/white</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
+    </style>
+
+</resources>
+

@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         binding.ivAyuda.setOnClickListener {
             it.startAnimation(scaleRotateIn)
             it.postDelayed({
-                val intent = Intent(this, Ayuda::class.java)
+                val intent = Intent(this, MainAyuda::class.java)
                 startActivity(intent)
             }, scaleRotateIn.duration)
         }
