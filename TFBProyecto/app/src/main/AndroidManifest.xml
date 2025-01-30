@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TFB"
         tools:targetApi="31">
-
+        <activity
+            android:name=".MainAyuda"
+            android:exported="false" />
         <!-- SplashActivity configurada como actividad inicial -->
         <activity
             android:name=".SplashActivity"
@@ -38,9 +40,9 @@
         <activity
             android:name=".MainActivity"
             android:exported="true" />
-
-        <activity android:name=".Cuenta"
-            android:exported="false"/>
+        <activity
+            android:name=".Cuenta"
+            android:exported="false" />
 
         <meta-data
             android:name="preloaded_fonts"
