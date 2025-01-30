@@ -1,6 +1,7 @@
 package com.example.tfb
 
 import android.app.AlertDialog
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.widget.ImageView
@@ -16,7 +17,7 @@ class Jugar : AppCompatActivity() {
     private lateinit var binding: ActivityJugarBinding
     private lateinit var adapter: JuegoAdapter
     private var platosMap:MutableList<Comida> = ComidaProvider.listaComida.toMutableList()
-
+    private var copia = platosMap
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityJugarBinding.inflate(layoutInflater)
@@ -26,6 +27,7 @@ class Jugar : AppCompatActivity() {
             binding.imPlato3,
             binding.imPlato4
         )
+
 
         setContentView(binding.root)
         binding.btInicio.isEnabled = true
@@ -45,13 +47,6 @@ class Jugar : AppCompatActivity() {
             juego(platos)
 
 
-        }
-
-
-        if (binding.ivBebida.drawable != null){
-            if (platos.isNotEmpty()){
-                binding.enviarbtn.isEnabled = true
-            }
         }
 
 
@@ -76,57 +71,71 @@ class Jugar : AppCompatActivity() {
     }
 
     private fun juego(platos: List<ImageView>) {
-
         generaCliente()
+        iniciaRecycler()
 
+        // Lista para manejar los datos en el RecyclerView
+        val listaComidas = platosMap.toMutableList()
 
-            iniciaRecycler()
-            // Configura el adaptador con un listener para actualizar las imágenes
-            adapter = JuegoAdapter(platosMap) { comida ->
-                // Actualiza las imágenes con el objeto seleccionado
-                if (comida.) {
-                    binding.ivBebida.setImageResource(comida.foto)
-                } else {
-                    val platos = listOf(
-                        binding.imPlato1,
-                        binding.imPlato2,
-                        binding.imPlato3,
-                        binding.imPlato4
-                    )
-                    for (plato in platos) {
-                        if (plato.drawable == null) {
-                            plato.setImageResource(comida.foto)
-                            break
-                        }
-                    }
-                }
+        // Configura el adaptador con un listener para actualizar las imágenes
+        adapter = JuegoAdapter(listaComidas) { comida ->
+            // Guardamos una referencia al objeto seleccionado
+            var comidaSeleccionada: Comida? = comida
 
-                // Asignar onClickListener a cada plato
+            if (comida.bebida == true) {
+                binding.ivBebida.setImageResource(comida.foto)
+                binding.ivBebida.tag = comida // Guardar el objeto en el tag para recuperarlo después
+            } else {
+                val platos = listOf(
+                    binding.imPlato1,
+                    binding.imPlato2,
+                    binding.imPlato3,
+                    binding.imPlato4
+                )
+
                 for (plato in platos) {
-                    plato.setOnClickListener {
-                        // Eliminar la imagen del plato al hacer clic
-                        plato.setImageResource(0)
-                        devolverItemRecycler(comida)
-                        Toast.makeText(this, "Plato vaciado", Toast.LENGTH_SHORT).show()
+                    if (plato.drawable == null) {
+                        plato.setImageResource(comida.foto)
+                        plato.tag = comida // Guardar el objeto en el tag
+                        listaComidas.remove(comida) // Lo quitamos de la lista
+                        adapter.notifyDataSetChanged() // Notificar al RecyclerView
+                        break
                     }
                 }
-                binding.ivBebida.setOnClickListener {
-                    // Eliminar la imagen de la bebida al hacer clic
-                    binding.ivBebida.setImageResource(0)
-                    devolverItemRecycler(comida)
-                    Toast.makeText(this, "Bebida vaciada", Toast.LENGTH_SHORT).show()
-                }
-
-                Toast.makeText(this, "Seleccionaste: ${comida.nombre}", Toast.LENGTH_SHORT).show()
             }
-            binding.rvJuego.adapter = adapter
 
+            // Asignar onClickListener a cada plato para devolverlo
+            for (plato in platos) {
+                plato.setOnClickListener {
+                    val comidaADevolver = plato.tag as? Comida
+                    if (comidaADevolver != null) {
+                        // Devolver a la lista del adaptador
+                        listaComidas.add(comidaADevolver)
+                        adapter.notifyDataSetChanged() // Actualizar el RecyclerView
+                    }
+                    plato.setImageResource(0) // Quitar la imagen
+                    plato.tag = null // Limpiar el tag
+                    Toast.makeText(this, "Plato vaciado", Toast.LENGTH_SHORT).show()
+                }
+            }
 
+            // Hacer lo mismo con la bebida
+            binding.ivBebida.setOnClickListener {
+                val bebidaADevolver = binding.ivBebida.tag as? Comida
+                if (bebidaADevolver != null) {
+                    listaComidas.add(bebidaADevolver)
+                    adapter.notifyDataSetChanged() // Actualizar el RecyclerView
+                }
+                binding.ivBebida.setImageResource(0)
+                binding.ivBebida.tag = null
+            }
+        }
+
+        binding.rvJuego.adapter = adapter
     }
 
-    private fun devolverItemRecycler(comida: Int) {
-        TODO("Not yet implemented")
-    }
+
+
 
     // Función para generar un cliente aleatorio
     fun generaCliente(): Cliente {
@@ -173,21 +182,23 @@ class Jugar : AppCompatActivity() {
     }
 
 
-
     private fun iniciaRecycler() {
         adapter = JuegoAdapter(
             platosMap,
             onClickListener = { comida -> onItemSelected(comida)},
-            onClickDelete = {position -> onDeletedItem(position)}
+
         )
         binding.rvJuego.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.rvJuego.adapter = adapter
     }
 
-    private fun onDeletedItem(position: Int){
+
+    private fun onDeletedItem(position: Int) {
         platosMap.removeAt(position)
         adapter.notifyItemRemoved(position)
+        adapter.notifyItemRangeChanged(position, platosMap.size)
     }
+
 
     private fun onItemSelected(comida: Comida) {
         Toast.makeText(this,comida.nombre,Toast.LENGTH_SHORT).show()
