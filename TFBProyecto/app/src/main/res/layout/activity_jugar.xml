@@ -52,10 +52,10 @@
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintHorizontal_bias="0.888"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.317"
+        app:layout_constraintVertical_bias="0.295"
         app:strokeColor="#00E9E3E3"
         app:strokeWidth="2dp"
         tools:text="Inicio" />
@@ -229,6 +229,7 @@
             app:layout_rowWeight="1" />
     </androidx.gridlayout.widget.GridLayout>
 
+
     <TextView
         android:id="@+id/tvCrono"
         android:layout_width="65dp"
@@ -239,21 +240,56 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/backgroundImage"
-        app:layout_constraintHorizontal_bias="0.962"
+        app:layout_constraintHorizontal_bias="0.901"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.26"
+        app:layout_constraintVertical_bias="0.237"
         tools:text="02:00" />
+
+    <TextView
+        android:id="@+id/tvCrono2"
+        android:layout_width="147dp"
+        android:layout_height="130dp"
+        android:fontFamily="@font/bungee"
+        android:gravity="center_vertical"
+        android:text="@string/sample_timer"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/backgroundImage"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.254"
+        tools:text="2500" />
 
     <Button
         android:id="@+id/enviarbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="enviar"
-        app:layout_constraintBottom_toBottomOf="@+id/btInicio"
+        android:layout_width="107dp"
+        android:layout_height="69dp"
+        android:backgroundTint="#D068E4"
+        android:fontFamily="@font/bungee"
+        android:paddingLeft="2dp"
+        android:paddingTop="2dp"
+        android:paddingRight="2dp"
+        android:paddingBottom="2dp"
+        android:shadowColor="#000000"
+        android:shadowDx="10"
+        android:shadowDy="10"
+        android:shadowRadius="10"
+        android:textColor="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textSize="13sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.095"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivFotoFicha"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.27"
+        app:strokeColor="#00E9E3E3"
+        app:strokeWidth="2dp"
+        tools:text="Siguiente" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
