@@ -12,37 +12,52 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TFB"
         tools:targetApi="31">
+
         <activity
             android:name=".MainAyuda"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
         <!-- SplashActivity configurada como actividad inicial -->
         <activity
             android:name=".SplashActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".Ayuda"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".Ranking"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".Jugar"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".Registro"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".Cuenta"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />  
 
         <meta-data
             android:name="preloaded_fonts"

@@ -247,22 +247,22 @@
         tools:text="02:00" />
 
     <TextView
-        android:id="@+id/tvCrono2"
+        android:id="@+id/tvPuntuacion"
         android:layout_width="147dp"
         android:layout_height="130dp"
         android:fontFamily="@font/bungee"
         android:gravity="center_vertical"
-        android:text="@string/sample_timer"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="50dp"
+        android:text="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/backgroundImage"
         app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.254"
-        tools:text="2500" />
+         />
 
     <Button
         android:id="@+id/enviarbtn"
@@ -278,13 +278,14 @@
         android:shadowDx="10"
         android:shadowDy="10"
         android:shadowRadius="10"
+        android:text="siguiente"
         android:textColor="#FFFFFF"
         android:textColorLink="#FFFFFF"
         android:textSize="13sp"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.27"

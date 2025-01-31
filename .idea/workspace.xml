@@ -92,14 +92,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bb555af-5b2d-4a80-9d1d-a79e347bbf7c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/AyudaAlimentosFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/AyudaAlimentosFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/MainAyuda.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/MainAyuda.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/PagerAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/PagerAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/activity_ayuda.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/activity_ayuda.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/activity_main_ayuda.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/activity_main_ayuda.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/fragment_ayuda_alimentos.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/fragment_ayuda_alimentos.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Jugar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Jugar.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/activity_jugar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/activity_jugar.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,6 +230,7 @@
       <recent name="C:\Users\Alumno\Desktop\TFB\app\src\main\res\font" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Alumno\Desktop\TFB\TFBProyecto\app\src\main\res\raw" />
       <recent name="C:\Users\Alumno\Desktop\TFB\TFBProyecto\app\src\main\res\drawable" />
       <recent name="C:\Users\sergi\proyecto\TFB\TFBProyecto\app" />
     </key>
@@ -253,7 +251,7 @@
   </component>
   <component name="RunManager" selected="Android App.TFBProyecto.TFB.app">
     <configuration name="TFBProyecto.TFB.app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
-      <module name="TFBProyecto.TFB.app.main~1" />
+      <module name="TFBProyecto.TFB.app.main" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
