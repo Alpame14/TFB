@@ -24,7 +24,7 @@ class ComidaProvider {
             Comida(
                 nombre = "Bacon",
                 alergeno = Alergeno.Ninguno,
-                categoria = Categoria.Origen_Animal,
+                categoria = Categoria.Animal,
                 bebida = false,
                 proteinas = 37.0,
                 grasas = 42.0,
@@ -89,7 +89,7 @@ class ComidaProvider {
             Comida(
                 nombre = "Gamba",
                 alergeno = Alergeno.Crustaceos,
-                categoria = Categoria.Origen_Animal,
+                categoria = Categoria.Animal,
                 bebida = false,
                 proteinas = 20.3,
                 grasas = 1.5,
@@ -102,7 +102,7 @@ class ComidaProvider {
             Comida(
                 nombre = "Huevo",
                 alergeno = Alergeno.Huevo,
-                categoria = Categoria.Origen_Animal,
+                categoria = Categoria.Animal,
                 bebida = false,
                 proteinas = 13.0,
                 grasas = 10.0,
@@ -193,7 +193,7 @@ class ComidaProvider {
             Comida(
                 nombre = "Pescado",
                 alergeno = Alergeno.Pescado,
-                categoria = Categoria.Origen_Animal,
+                categoria = Categoria.Animal,
                 bebida = false,
                 proteinas = 20.0,
                 grasas = 5.0,
@@ -232,7 +232,7 @@ class ComidaProvider {
             Comida(
                 nombre = "Salchicha",
                 alergeno = Alergeno.Ninguno,
-                categoria = Categoria.Origen_Animal,
+                categoria = Categoria.Animal,
                 bebida = false,
                 proteinas = 12.0,
                 grasas = 28.0,
@@ -258,7 +258,7 @@ class ComidaProvider {
             Comida(
                 nombre = "Jamón York",
                 alergeno = Alergeno.Ninguno,
-                categoria = Categoria.Origen_Animal,
+                categoria = Categoria.Animal,
                 bebida = false,
                 proteinas = 18.5,
                 grasas = 7.3,

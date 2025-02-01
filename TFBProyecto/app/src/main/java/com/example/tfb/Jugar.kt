@@ -1,7 +1,6 @@
 package com.example.tfb
 
 import android.app.AlertDialog
-import android.graphics.drawable.Drawable
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -130,8 +129,8 @@ class Jugar : AppCompatActivity() {
                 puntuacion = 0.0
                 //controlamos dieta
             } else if (binding.tvDietaPers.text.toString()
-                    .equals(Dietas.Vegano) && (pivot.categoria == Categoria.Origen_Animal || pivot.categoria == Categoria.Lacteo) || (binding.tvDietaPers.text.toString()
-                    .equals(Dietas.Vegetariano) && pivot.categoria == Categoria.Origen_Animal)
+                    .equals(Dietas.Vegano) && (pivot.categoria == Categoria.Animal || pivot.categoria == Categoria.Lacteo) || (binding.tvDietaPers.text.toString()
+                    .equals(Dietas.Vegetariano) && pivot.categoria == Categoria.Animal)
             ) {
                 puntuacion = puntuacion / 2
             } else {
