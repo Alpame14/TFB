@@ -7,7 +7,7 @@ class Enumerados {
     }
     enum class Alergeno{
         Huevo,
-        Lacteos,
+        Lacteo,
         Frutos_Secos,
         Gluten,
         Pescado,

@@ -22,10 +22,10 @@ class JuegoAdapter(
         holder.render(item, position) {
             // Enviar el objeto Comida al método de la actividad/fragmento en vez de eliminarlo aquí
             onClickListener(item)
-            removeItem(item) // Eliminamos el item del adaptador cuando se hace clic en el plato
+            //removeItem(item) // Eliminamos el item del adaptador cuando se hace clic en el plato
         }
     }
-
+/*
     // Elimina el item de la lista y actualiza el RecyclerView
     fun removeItem(comida: Comida) {
         val position = listaComidas.indexOf(comida)
@@ -35,6 +35,6 @@ class JuegoAdapter(
             notifyItemRangeChanged(position, listaComidas.size)
         }
     }
-
+*/
     override fun getItemCount(): Int = listaComidas.size
 }

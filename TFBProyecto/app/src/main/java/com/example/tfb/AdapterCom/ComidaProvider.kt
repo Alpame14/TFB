@@ -218,7 +218,7 @@ class ComidaProvider {
 
             Comida(
                 nombre = "Queso",
-                alergeno = Alergeno.Lacteos,
+                alergeno = Alergeno.Lacteo,
                 categoria = Categoria.Lacteo,
                 bebida = false,
                 proteinas = 25.0,
@@ -244,7 +244,7 @@ class ComidaProvider {
 
             Comida(
                 nombre = "Yogurt",
-                alergeno = Alergeno.Lacteos,
+                alergeno = Alergeno.Lacteo,
                 categoria = Categoria.Lacteo,
                 bebida = false,
                 proteinas = 4.3,
@@ -323,7 +323,7 @@ class ComidaProvider {
 
             Comida(
                 nombre = "Leche",
-                alergeno = Alergeno.Lacteos,
+                alergeno = Alergeno.Lacteo,
                 categoria = Categoria.Bebida,
                 bebida = true,
                 proteinas = 3.4,
