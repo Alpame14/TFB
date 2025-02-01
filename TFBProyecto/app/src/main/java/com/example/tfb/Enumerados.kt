@@ -27,7 +27,7 @@ class Enumerados {
         Fruta,
         Lacteo,
         Cereal,
-        Origen_Animal,
+        Animal,
         Bebida
     }
 }

@@ -1,14 +1,70 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AcercaDeFragment">
+    tools:context=".AcercaDeFragment"
+    >
 
-    <!-- TODO: Update blank fragment layout -->
+    <!-- Contenedor del VideoView ajustado a la proporción 1080x2340 -->
+    <FrameLayout
+        android:id="@+id/videoContainer"
+        android:layout_width="209dp"
+        android:layout_height="422dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.110000014">
+
+        <VideoView
+            android:id="@+id/videoView"
+            android:layout_width="match_parent"
+            android:layout_height="422dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter" />
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/btnCorreo"
+        android:layout_width="338dp"
+        android:layout_height="69dp"
+        android:backgroundTint="#D068E4"
+        android:fontFamily="@font/bungee"
+        android:shadowColor="#000000"
+        android:shadowDx="10"
+        android:shadowDy="10"
+        android:shadowRadius="10"
+        android:text="timeforbrunch@gmail.com"
+        android:textColor="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textSize="17sp"
+        app:cornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.791"
+        app:strokeColor="#00E9E3E3"
+        app:strokeWidth="2dp"
+        tools:text="timeforbrunch@gmail.com" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
-</FrameLayout>
+        android:id="@+id/tvInfo"
+        android:layout_width="413dp"
+        android:layout_height="96dp"
+        android:background="#232222"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="Sergio García | Álvaro Parras&#10;01/02/2025 v. 1.0.0&#10;Paseo Universidad, 1, 13005 Ciudad Real&#10;© 2025 TimeForBrunch. All rights reserved."
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.974" />
+</androidx.constraintlayout.widget.ConstraintLayout>

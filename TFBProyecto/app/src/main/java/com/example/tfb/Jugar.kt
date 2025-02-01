@@ -1,7 +1,6 @@
 package com.example.tfb
 
 import android.app.AlertDialog
-import android.graphics.drawable.Drawable
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
