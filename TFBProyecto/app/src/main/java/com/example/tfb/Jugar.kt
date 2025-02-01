@@ -26,7 +26,8 @@ class Jugar : AppCompatActivity() {
     private var grasas: Double = 0.0
     private var cal: Double = 0.0
     private var multi: Double = 0.0
-    private var mediaPlayer: MediaPlayer? = null // ✅ MediaPlayer para la música
+    private var mediaPlayer: MediaPlayer? = null
+    private var countDownTimer: CountDownTimer? = null // ✅ Control del temporizador
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,25 +64,21 @@ class Jugar : AppCompatActivity() {
         }
 
         binding.enviarbtn.setOnClickListener {
-            // ✅ Bloquear envío si hay platos vacíos
-            if (platos.all { it.drawable == null }) {
-                Toast.makeText(this, "Debes seleccionar al menos un plato", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+            if (todosLosPlatosLlenos(platos)) {
+                calculaPuntuacion(platos)
+                generaCliente()
+                reiniciaTablero(platos)
+
+                grasas = 0.0
+                cal = 0.0
+                multi = 0.0
+
+                platosMap.clear()
+                platosMap.addAll(ComidaProvider.listaComida.shuffled().take(10))
+                adapter.notifyDataSetChanged()
+            } else {
+                Toast.makeText(this, "Debes llenar todos los platos y la bebida", Toast.LENGTH_SHORT).show()
             }
-
-            calculaPuntuacion(platos)
-            generaCliente()
-            reiniciaTablero(platos)
-
-            // ✅ Reinicio correcto de las variables acumulativas
-            grasas = 0.0
-            cal = 0.0
-            multi = 0.0
-
-            // 🔹 Generar nueva lista de 10 comidas aleatorias
-            platosMap.clear()
-            platosMap.addAll(ComidaProvider.listaComida.shuffled().take(10))
-            adapter.notifyDataSetChanged()
         }
     }
 
@@ -96,11 +93,11 @@ class Jugar : AppCompatActivity() {
 
         for (plato in platos) {
             pivot = plato.tag as? Comida
-            if (!comprobaciones(pivot)) return  // ✅ Si hay un error en dieta/alérgenos, termina aquí
+            if (!comprobaciones(pivot)) return
         }
 
         pivot = binding.ivBebida.tag as? Comida
-        if (!comprobaciones(pivot)) return  // ✅ Si hay un error en dieta/alérgenos, termina aquí
+        if (!comprobaciones(pivot)) return
 
         puntuacion += 50
         if (300 <= cal && cal <= 450) {
@@ -133,9 +130,9 @@ class Jugar : AppCompatActivity() {
         }
 
         if ((binding.tvDietaPers.text.toString() == Dietas.Vegano.toString() &&
-                    (pivot.categoria == Categoria.Origen_Animal || pivot.categoria == Categoria.Lacteo)) ||
+                    (pivot.categoria == Categoria.Animal || pivot.categoria == Categoria.Lacteo)) ||
             (binding.tvDietaPers.text.toString() == Dietas.Vegetariano.toString() &&
-                    pivot.categoria == Categoria.Origen_Animal)
+                    pivot.categoria == Categoria.Animal)
         ) {
             puntuacion = 0.0
             mostrarGameOver()
@@ -149,10 +146,13 @@ class Jugar : AppCompatActivity() {
     }
 
     private fun mostrarGameOver() {
-        AlertDialog.Builder(this)
+        countDownTimer?.cancel() // ✅ Detener el temporizador si el jugador pierde
+        AlertDialog.Builder(this@Jugar)
             .setTitle("¡Perdiste!")
             .setMessage("Has fallado en alérgenos o dieta. Puntuación: 0")
-            .setPositiveButton("Volver a jugar") { _, _ -> recreate() } // ✅ Reiniciar la activity
+            .setPositiveButton("Volver a jugar") { _, _ ->
+                reiniciarJuego()
+            }
             .setNegativeButton("Volver al menú") { _, _ -> finish() }
             .setCancelable(false)
             .show()
@@ -293,7 +293,8 @@ class Jugar : AppCompatActivity() {
     }
 
     private fun startCountdownTimer() {
-        object : CountDownTimer(120000, 1000) {
+        countDownTimer?.cancel() // ✅ Asegurar que el temporizador anterior se detenga antes de iniciar uno nuevo
+        countDownTimer = object : CountDownTimer(120000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val minutes = millisUntilFinished / 1000 / 60
                 val seconds = millisUntilFinished / 1000 % 60
@@ -304,14 +305,26 @@ class Jugar : AppCompatActivity() {
                 binding.tvCrono.text = "00:00"
                 binding.enviarbtn.isEnabled = false
                 binding.enviarbtn.alpha = 0.5f
+
+                val usuario = Usuario.currentUsuario?.nombre.toString()
                 AlertDialog.Builder(this@Jugar)
                     .setTitle("Juego terminado")
-                    .setMessage("Puntuación: $puntuacion")
-                    .setPositiveButton("Volver a jugar") { _, _ -> recreate() } // ✅ Reiniciar activity
+                    .setMessage("Usuario: $usuario\nPuntuación: $puntuacion")
+                    .setPositiveButton("Volver a jugar") { _, _ -> reiniciarJuego() }
                     .setNegativeButton("Volver al menú") { _, _ -> finish() }
                     .setCancelable(false)
                     .show()
             }
         }.start()
     }
+    private fun reiniciarJuego() {
+        val intent = intent
+        finish()
+        startActivity(intent)
+    }
+
+    private fun todosLosPlatosLlenos(platos: List<ImageView>): Boolean {
+        return platos.all { it.drawable != null } && binding.ivBebida.drawable != null
+    }
+
 }
