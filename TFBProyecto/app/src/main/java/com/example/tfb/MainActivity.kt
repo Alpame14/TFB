@@ -104,7 +104,7 @@ class MainActivity : AppCompatActivity() {
                 nombre = nombre,
                 email = email,
                 provider = ProviderType.valueOf(provider),
-                maxscore = 0)
+                maxscore = 0.0)
 
 
         } else {
