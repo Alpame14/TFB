@@ -102,7 +102,7 @@ class Registro : AppCompatActivity() {
                                             nombre = usernameText,
                                             email = emailText,
                                             provider = ProviderType.BASIC,
-                                            maxscore = 0
+                                            maxscore = 0.0
                                         )
 
                                         showHome(emailText, ProviderType.BASIC)
@@ -186,7 +186,7 @@ class Registro : AppCompatActivity() {
                                                 nombre = nombre,
                                                 email = emailText,
                                                 provider = ProviderType.BASIC,
-                                                maxscore = 0
+                                                maxscore = 0.0
                                             )
 
                                             showHome(emailText, ProviderType.BASIC)
@@ -232,7 +232,7 @@ class Registro : AppCompatActivity() {
                                 nombre = acc.displayName.toString(),
                                 email =  acc.email.toString(),
                                 provider = ProviderType.GOOGLE,
-                                maxscore = 0 //cuando haya bbdd
+                                maxscore = 0.0 //cuando haya bbdd
                             )
                             showHome(acc.email.toString(), ProviderType.GOOGLE)
                         } else {
