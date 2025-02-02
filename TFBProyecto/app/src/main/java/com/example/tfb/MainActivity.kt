@@ -31,9 +31,9 @@ class MainActivity : AppCompatActivity() {
 
 
         session()
-        binding.tv.text = Usuario.currentUsuario?.nombre ?: "Usuario no disponible"
-        binding.tv2.text = Usuario.currentUsuario?.email ?: "Email no disponible"
-        binding.tv3.text = Usuario.currentUsuario?.provider.toString()
+        //binding.tv.text = Usuario.currentUsuario?.nombre ?: "Usuario no disponible"
+       // binding.tv2.text = Usuario.currentUsuario?.email ?: "Email no disponible"
+       // binding.tv3.text = Usuario.currentUsuario?.provider.toString()
 
         // Cargar animaciones
         val scaleRotateIn = AnimationUtils.loadAnimation(this, R.anim.scale_rotate_in)

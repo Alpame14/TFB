@@ -115,39 +115,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.563" />
 
-    <TextView
-        android:id="@+id/tv"
-        android:layout_width="102dp"
-        android:layout_height="34dp"
-        android:text="@string/textview1"
-        android:textColor="#F8F1F1"
-        android:textColorLink="#F4EFEF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/tv2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/tv2"
-        android:layout_width="117dp"
-        android:layout_height="40dp"
-        android:text="@string/textview2"
-        android:textColor="#F8F1F1"
-        android:textColorLink="#F4EFEF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/tv3"
-        android:layout_width="80dp"
-        android:layout_height="69dp"
-        android:layout_marginTop="620dp"
-        android:text="@string/textview3"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.525"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

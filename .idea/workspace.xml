@@ -90,6 +90,11 @@
           <theme>@style/Theme.TFB</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/TFBProyecto/app/src/main/res/menu/menu_acerca_de.xml">
+        <config>
+          <theme>@style/Theme.TFB</theme>
+        </config>
+      </layout>
     </layouts>
   </component>
   <component name="AutoImportSettings">
@@ -98,10 +103,11 @@
   <component name="ChangeListManager">
     <list default="true" id="4bb555af-5b2d-4a80-9d1d-a79e347bbf7c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Cuenta.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Cuenta.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Registro.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Registro.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/StorageFoto.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/StorageFoto.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/AcercaDeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/AcercaDeFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/fragment_acerca_de.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/fragment_acerca_de.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +117,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\sergi\.android\avd\Pixel_9_API_35.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=RFCW11VHAYY)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -162,11 +168,11 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Object" />
-        <option value="resourceFile" />
         <option value="layoutResourceFile" />
         <option value="Class" />
         <option value="Kotlin Class" />
         <option value="valueResourceFile" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -179,12 +185,12 @@
     &quot;assignee&quot;: &quot;Alpame14&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Alpame14/TFB&quot;,
-    &quot;accountId&quot;: &quot;3f909bf4-bf91-4242-9f8a-1aaeae64258b&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Alpame14/TFB.git",
+    "accountId": "7bd2d68c-994b-4957-adb1-343d657424d4"
   }
-}</component>
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -230,6 +236,7 @@
       <recent name="C:\Users\Alumno\Desktop\TFB\app\src\main\res\font" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Desktop\TFBRepos\TFB\TFBProyecto\app\src\main\res\drawable" />
       <recent name="C:\Users\Alumno\Desktop\TFB\TFBProyecto\app\src\main\res\raw" />
       <recent name="C:\Users\Alumno\Desktop\TFB\TFBProyecto\app\src\main\res\drawable" />
       <recent name="C:\Users\sergi\proyecto\TFB\TFBProyecto\app" />
@@ -251,7 +258,8 @@
   </component>
   <component name="RunManager" selected="Android App.TFBProyecto.TFB.app">
     <configuration name="TFBProyecto.TFB.app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
-      <module name="TFB.app.main" />
+      <module name="TFB.app" />
+      <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
@@ -259,6 +267,7 @@
       <option name="PM_INSTALL_OPTIONS" value="" />
       <option name="ALL_USERS" value="false" />
       <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="ALLOW_ASSUME_VERIFIED" value="false" />
       <option name="CLEAR_APP_STORAGE" value="false" />
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
@@ -311,6 +320,7 @@
         <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
       </Profilers>
       <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
       <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
@@ -320,6 +330,7 @@
     </configuration>
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="TFB.app" />
+      <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
@@ -327,6 +338,7 @@
       <option name="PM_INSTALL_OPTIONS" value="" />
       <option name="ALL_USERS" value="false" />
       <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="ALLOW_ASSUME_VERIFIED" value="false" />
       <option name="CLEAR_APP_STORAGE" value="false" />
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
@@ -379,6 +391,7 @@
         <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
       </Profilers>
       <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
       <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
@@ -388,6 +401,7 @@
     </configuration>
     <configuration name="app.androidTest" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="TFB.app.androidTest" />
+      <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
@@ -395,6 +409,7 @@
       <option name="PM_INSTALL_OPTIONS" value="" />
       <option name="ALL_USERS" value="false" />
       <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="ALLOW_ASSUME_VERIFIED" value="false" />
       <option name="CLEAR_APP_STORAGE" value="false" />
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
@@ -447,6 +462,7 @@
         <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
       </Profilers>
       <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
       <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
@@ -455,7 +471,8 @@
       </method>
     </configuration>
     <configuration name="app.main" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
-      <module name="TFB.app.main" />
+      <module name="TFB.app" />
+      <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
@@ -463,6 +480,7 @@
       <option name="PM_INSTALL_OPTIONS" value="" />
       <option name="ALL_USERS" value="false" />
       <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="ALLOW_ASSUME_VERIFIED" value="false" />
       <option name="CLEAR_APP_STORAGE" value="false" />
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
@@ -515,6 +533,7 @@
         <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
       </Profilers>
       <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
       <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
@@ -524,6 +543,7 @@
     </configuration>
     <configuration name="app.unitTest" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="TFB.app.unitTest" />
+      <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
@@ -531,6 +551,7 @@
       <option name="PM_INSTALL_OPTIONS" value="" />
       <option name="ALL_USERS" value="false" />
       <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="ALLOW_ASSUME_VERIFIED" value="false" />
       <option name="CLEAR_APP_STORAGE" value="false" />
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
@@ -583,6 +604,7 @@
         <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
       </Profilers>
       <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
       <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
@@ -628,5 +650,21 @@
       <updated>1732730585459</updated>
     </task>
     <servers />
+  </component>
+  <component name="play_dynamic_filters_status">
+    <option name="appIdToCheckInfo">
+      <map>
+        <entry key="com.example.timeforbrunch">
+          <value>
+            <CheckInfo lastCheckTimestamp="1738490908231" />
+          </value>
+        </entry>
+        <entry key="com.example.timeforbrunch.test">
+          <value>
+            <CheckInfo lastCheckTimestamp="1738490908233" />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

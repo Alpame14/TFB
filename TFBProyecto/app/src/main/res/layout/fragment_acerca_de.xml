@@ -4,10 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AcercaDeFragment"
-    >
+    tools:context=".AcercaDeFragment">
 
-    <!-- Contenedor del VideoView ajustado a la proporción 1080x2340 -->
+    <!-- Toolbar con título alineado a la izquierda y tres puntos -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#d269e6"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/PopupMenuStyle"
+        app:title="Contacta con nosotros"
+        app:titleTextColor="#ede7df" />
+
+    <!-- Contenedor del VideoView ajustado -->
     <FrameLayout
         android:id="@+id/videoContainer"
         android:layout_width="209dp"
@@ -16,7 +26,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.110000014">
+        app:layout_constraintVertical_bias="0.32999998">
 
         <VideoView
             android:id="@+id/videoView"
@@ -25,31 +35,6 @@
             android:adjustViewBounds="true"
             android:scaleType="fitCenter" />
     </FrameLayout>
-
-    <Button
-        android:id="@+id/btnCorreo"
-        android:layout_width="338dp"
-        android:layout_height="69dp"
-        android:backgroundTint="#D068E4"
-        android:fontFamily="@font/bungee"
-        android:shadowColor="#000000"
-        android:shadowDx="10"
-        android:shadowDy="10"
-        android:shadowRadius="10"
-        android:text="timeforbrunch@gmail.com"
-        android:textColor="#FFFFFF"
-        android:textColorLink="#FFFFFF"
-        android:textSize="17sp"
-        app:cornerRadius="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.791"
-        app:strokeColor="#00E9E3E3"
-        app:strokeWidth="2dp"
-        tools:text="timeforbrunch@gmail.com" />
 
     <TextView
         android:id="@+id/tvInfo"
@@ -66,5 +51,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.974" />
+        app:layout_constraintVertical_bias="0.86" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,5 +12,12 @@
         <item name="android:textColorPrimary">@android:color/black</item>
     </style>
 
+    <style name="PopupMenuStyle" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:popupBackground">#FFFFFF</item> <!-- Fondo blanco -->
+        <item name="android:textColorPrimary">#000000</item> <!-- Letras negras -->
+    </style>
+
+
+
 </resources>
 
