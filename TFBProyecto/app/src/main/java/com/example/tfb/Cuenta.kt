@@ -5,6 +5,8 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -15,6 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.util.*
+
 class Cuenta : AppCompatActivity() {
     private lateinit var binding: ActivityCuentaBinding
     private lateinit var storageFoto: StorageFoto
@@ -36,12 +39,30 @@ class Cuenta : AppCompatActivity() {
         val email = prefs.getString("email", "") ?: ""
         val nombre = prefs.getString("nombre", "Usuario") ?: "Usuario"
         val maxscore = prefs.getInt("maxscore", 0)  // 🔹 Cargar maxscore de SharedPreferences
-        val fotoUrl = prefs.getString("foto", "")  // Recuperar la URL de la foto
+        val userId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
 
-// Mostrar la foto en el ImageView si existe
-        if (!fotoUrl.isNullOrEmpty()) {
-            Glide.with(this)  // Usando Glide para cargar la imagen
-                .load(fotoUrl)
+        val storageRef = FirebaseStorage.getInstance().reference.child("imagenes_perfil/"+"perfil_${userId}.jpg")
+
+// Obtener la URL de descarga de la foto
+        storageRef.downloadUrl.addOnSuccessListener { uri ->
+            val fotoUrl = uri.toString()  // Obtener la URL de la foto
+
+            // Cargar la imagen con Glide si la URL no está vacía
+            if (!fotoUrl.isNullOrEmpty()) {
+                Glide.with(this)  // Usando Glide para cargar la imagen
+                    .load(fotoUrl)
+                    .into(binding.imageView)  // O el ImageView correspondiente
+            } else {
+                Toast.makeText(this, "La URL de la foto está vacía", Toast.LENGTH_SHORT).show()
+            }
+        }.addOnFailureListener { e ->
+            // Mostrar el mensaje de error más detallado
+            Log.e("FotoCarga", "Error al cargar la foto desde Firebase: ${e.message}")
+            Toast.makeText(this, "Error al cargar la foto: ${e.message}", Toast.LENGTH_SHORT).show()
+
+            // Puedes probar con una foto predeterminada o mostrar una imagen en caso de error
+            Glide.with(this)
+                .load(R.drawable.ico_perfil)  // Asegúrate de tener una imagen predeterminada en los recursos
                 .into(binding.imageView)
         }
         // 🔹 Mostrar datos en la UI
@@ -51,7 +72,8 @@ class Cuenta : AppCompatActivity() {
 
         // 🔹 También actualizar Usuario.currentUsuario si es nulo
         if (Usuario.currentUsuario == null) {
-            Usuario.currentUsuario = Usuario.crearUsuario(nombre, email, Enumerados.ProviderType.BASIC, maxscore)
+            Usuario.currentUsuario =
+                Usuario.crearUsuario(nombre, email, Enumerados.ProviderType.BASIC, maxscore)
         }
 
         // Botón de cerrar sesión

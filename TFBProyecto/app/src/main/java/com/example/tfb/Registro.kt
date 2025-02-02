@@ -246,22 +246,18 @@ class Registro : AppCompatActivity() {
                         if (task.isSuccessful) {
                             val userId = task.result?.user?.uid ?: ""
 
-                            // 🔹 Obtener los datos del usuario desde Firestore
+                            // 🔹 Verificamos si el usuario ya existe en Firestore
                             FirebaseFirestore.getInstance().collection("users").document(userId)
                                 .get()
                                 .addOnSuccessListener { document ->
                                     if (document.exists()) {
+                                        // 🔹 Usuario encontrado en Firestore, recuperar datos
                                         val nombre = document.getString("username") ?: "Usuario sin nombre"
                                         val maxscore = document.getLong("maxscore")?.toInt() ?: 0
 
-                                        val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
-                                        prefs.putString("email", account.email)
-                                        prefs.putString("provider", ProviderType.GOOGLE.name)  // 🔹 Cambiar a Google
-                                        prefs.putString("nombre", nombre)
-                                        prefs.putInt("maxscore", maxscore)  // 🔹 Guardar maxscore en SharedPreferences
-                                        prefs.apply()
+                                        guardarDatosLocales(account.email ?: "", nombre, maxscore)
 
-                                        // 🔹 Asegurar que Usuario.currentUsuario se actualiza correctamente
+                                        // Actualizar usuario global
                                         Usuario.currentUsuario = Usuario.crearUsuario(
                                             nombre = nombre,
                                             email = account.email ?: "email desconocido",
@@ -270,8 +266,35 @@ class Registro : AppCompatActivity() {
                                         )
 
                                         showHome(account.email ?: "", ProviderType.GOOGLE)
+
                                     } else {
-                                        Toast.makeText(this, "No se encontró información del usuario.", Toast.LENGTH_SHORT).show()
+                                        // 🔹 Si el usuario no existe, lo guardamos en Firestore
+                                        val nuevoUsuario = mapOf(
+                                            "username" to (account.displayName ?: "Usuario"),
+                                            "email" to (account.email ?: ""),
+                                            "provider" to ProviderType.GOOGLE.name,
+                                            "maxscore" to 0  // Inicializar puntaje
+                                        )
+
+                                        FirebaseFirestore.getInstance().collection("users").document(userId)
+                                            .set(nuevoUsuario)
+                                            .addOnSuccessListener {
+                                                Log.d("Firestore", "Nuevo usuario guardado.")
+
+                                                guardarDatosLocales(account.email ?: "", account.displayName ?: "Usuario", 0)
+
+                                                Usuario.currentUsuario = Usuario.crearUsuario(
+                                                    nombre = account.displayName ?: "Usuario",
+                                                    email = account.email ?: "email desconocido",
+                                                    provider = ProviderType.GOOGLE,
+                                                    maxscore = 0
+                                                )
+
+                                                showHome(account.email ?: "", ProviderType.GOOGLE)
+                                            }
+                                            .addOnFailureListener { e ->
+                                                Log.e("Firestore", "Error al guardar usuario: ${e.message}")
+                                            }
                                     }
                                 }
                                 .addOnFailureListener { e ->
@@ -285,6 +308,16 @@ class Registro : AppCompatActivity() {
                 Toast.makeText(this, "Error al intentar iniciar sesión con Google: ${e.message}", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    // 🔹 Método auxiliar para guardar datos en SharedPreferences
+    private fun guardarDatosLocales(email: String, nombre: String, maxscore: Int) {
+        val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
+        prefs.putString("email", email)
+        prefs.putString("provider", ProviderType.GOOGLE.name)
+        prefs.putString("nombre", nombre)
+        prefs.putInt("maxscore", maxscore)
+        prefs.apply()
     }
 
 

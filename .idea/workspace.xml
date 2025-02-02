@@ -98,10 +98,10 @@
   <component name="ChangeListManager">
     <list default="true" id="4bb555af-5b2d-4a80-9d1d-a79e347bbf7c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Cuenta.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Cuenta.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Ranking.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Ranking.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Usuario.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Usuario.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/ranking_row.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/res/layout/ranking_row.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Registro.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/Registro.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/StorageFoto.kt" beforeDir="false" afterPath="$PROJECT_DIR$/TFBProyecto/app/src/main/java/com/example/tfb/StorageFoto.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
