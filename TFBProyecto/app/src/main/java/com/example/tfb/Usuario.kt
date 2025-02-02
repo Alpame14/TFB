@@ -5,14 +5,17 @@ package com.example.tfb
  */
 import android.provider.ContactsContract.CommonDataKinds.Photo
 import com.example.tfb.Enumerados.ProviderType
+import com.google.firebase.firestore.PropertyName
 
 data class Usuario(
-    val nombre: String,
-    val email: String,
-    val provider: ProviderType,
-    var maxscore: Int,
-    val foto: String? = null  // Agregar foto como atributo opcional
+    @PropertyName("username") var nombre: String = "",  // Cambiar de `val` a `var`
+    var email: String = "",
+    var provider: ProviderType = ProviderType.NINGUNO,
+    @PropertyName("maxscore") var maxscore: Int = 0,
+    var foto: String? = null
 ) {
+    constructor() : this("", "", ProviderType.NINGUNO, 0, null) // Constructor vacío obligatorio
+
     companion object {
         var currentUsuario: Usuario? = null
 
@@ -28,6 +31,7 @@ data class Usuario(
             return Usuario(nombre, email, provider, maxscore)
         }
     }
+
 }
 
 

@@ -10,6 +10,8 @@
     android:elevation="2dp">
 
     <!-- Imagen del número de ranking -->
+
+    <!-- Contenedor del texto -->
     <ImageView
         android:id="@+id/ivRank"
         android:layout_width="48dp"
@@ -17,7 +19,6 @@
         android:layout_marginEnd="8dp"
         android:contentDescription="@string/ranking_number" />
 
-    <!-- Contenedor del texto -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -27,12 +28,12 @@
         <!-- Nombre del usuario -->
         <TextView
             android:id="@+id/tvUsername"
-            android:layout_width="wrap_content"
+            android:layout_width="104dp"
             android:layout_height="wrap_content"
             android:text="Usuario"
+            android:textColor="@android:color/black"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/black" />
+            android:textStyle="bold" />
 
         <!-- Puntuación del usuario -->
         <TextView
