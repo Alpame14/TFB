@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -83,6 +84,12 @@ class Registro : AppCompatActivity() {
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 val userId = task.result?.user?.uid ?: ""
+                                saveUserToFirestore(
+                                    userId,
+                                    usernameText,
+                                    emailText,
+                                    ProviderType.BASIC
+                                )
                                 val userMap = mapOf(
                                     "username" to usernameText,
                                     "email" to emailText
@@ -91,7 +98,10 @@ class Registro : AppCompatActivity() {
                                 FirebaseFirestore.getInstance().collection("users").document(userId)
                                     .set(userMap)
                                     .addOnSuccessListener {
-                                        val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
+                                        val prefs = getSharedPreferences(
+                                            getString(R.string.prefs_file),
+                                            Context.MODE_PRIVATE
+                                        ).edit()
                                         prefs.putString("email", emailText)
                                         prefs.putString("provider", ProviderType.BASIC.name)
                                         prefs.putString("nombre", usernameText)
@@ -108,14 +118,23 @@ class Registro : AppCompatActivity() {
                                         showHome(emailText, ProviderType.BASIC)
                                     }
                                     .addOnFailureListener { e ->
-                                        Toast.makeText(this, "Error al guardar: ${e.message}", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(
+                                            this,
+                                            "Error al guardar: ${e.message}",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
                                     }
                             } else {
-                                Toast.makeText(this, "Error: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(
+                                    this,
+                                    "Error: ${task.exception?.message}",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
                         }
                 } else {
-                    Toast.makeText(this, "Por favor llena todos los campos", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Por favor llena todos los campos", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
             .setNegativeButton("Cancelar") { dialog, _ -> dialog.dismiss() }
@@ -141,14 +160,13 @@ class Registro : AppCompatActivity() {
         val googleButton = Button(this).apply {
             text = "Iniciar sesión con Google"
             setOnClickListener {
-                val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.default_web_client_id))
+                val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestIdToken(getString(R.string.default_web_client_id))
                     .requestEmail()
                     .build()
                 val googleClient = GoogleSignIn.getClient(context, googleConf)
-                googleClient.signOut()
+                googleClient.signOut() // Se asegura de que el usuario se cierre antes de iniciar sesión
                 startActivityForResult(googleClient.signInIntent, SIGN_IN)
-
-
             }
         }
 
@@ -169,24 +187,28 @@ class Registro : AppCompatActivity() {
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 val userId = task.result?.user?.uid ?: ""
+
+                                // 🔹 Obtener los datos del usuario desde Firestore
                                 FirebaseFirestore.getInstance().collection("users").document(userId)
                                     .get()
                                     .addOnSuccessListener { document ->
                                         if (document.exists()) {
                                             val nombre = document.getString("username") ?: "Usuario sin nombre"
+                                            val maxscore = document.getLong("maxscore")?.toInt() ?: 0
 
                                             val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
                                             prefs.putString("email", emailText)
                                             prefs.putString("provider", ProviderType.BASIC.name)
                                             prefs.putString("nombre", nombre)
+                                            prefs.putInt("maxscore", maxscore)  // 🔹 Guardar maxscore en SharedPreferences
                                             prefs.apply()
 
-                                            // Asignar los valores a Usuario.currentUsuario
+                                            // 🔹 Asegurar que Usuario.currentUsuario se actualiza correctamente
                                             Usuario.currentUsuario = Usuario.crearUsuario(
                                                 nombre = nombre,
                                                 email = emailText,
                                                 provider = ProviderType.BASIC,
-                                                maxscore = 0
+                                                maxscore = maxscore
                                             )
 
                                             showHome(emailText, ProviderType.BASIC)
@@ -216,37 +238,86 @@ class Registro : AppCompatActivity() {
         if (requestCode == SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
-                val acc = task.getResult(ApiException::class.java) // Puede lanzar ApiException
-                if (acc != null) {
-                    val credential = GoogleAuthProvider.getCredential(acc.idToken, null)
-                    FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener { it ->
-                        if (it.isSuccessful) {
+                val account = task.getResult(ApiException::class.java)
+                val credential = GoogleAuthProvider.getCredential(account.idToken, null)
 
-                            val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
-                            prefs.putString("email", acc.email)
-                            prefs.putString("provider", ProviderType.GOOGLE.name)
-                            prefs.putString("nombre", acc.displayName)
-                            prefs.apply()
+                FirebaseAuth.getInstance().signInWithCredential(credential)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            val userId = task.result?.user?.uid ?: ""
 
-                            Usuario.currentUsuario = Usuario.crearUsuario(
-                                nombre = acc.displayName.toString(),
-                                email =  acc.email.toString(),
-                                provider = ProviderType.GOOGLE,
-                                maxscore = 0 //cuando haya bbdd
-                            )
-                            showHome(acc.email.toString(), ProviderType.GOOGLE)
+                            // 🔹 Obtener los datos del usuario desde Firestore
+                            FirebaseFirestore.getInstance().collection("users").document(userId)
+                                .get()
+                                .addOnSuccessListener { document ->
+                                    if (document.exists()) {
+                                        val nombre = document.getString("username") ?: "Usuario sin nombre"
+                                        val maxscore = document.getLong("maxscore")?.toInt() ?: 0
+
+                                        val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
+                                        prefs.putString("email", account.email)
+                                        prefs.putString("provider", ProviderType.GOOGLE.name)  // 🔹 Cambiar a Google
+                                        prefs.putString("nombre", nombre)
+                                        prefs.putInt("maxscore", maxscore)  // 🔹 Guardar maxscore en SharedPreferences
+                                        prefs.apply()
+
+                                        // 🔹 Asegurar que Usuario.currentUsuario se actualiza correctamente
+                                        Usuario.currentUsuario = Usuario.crearUsuario(
+                                            nombre = nombre,
+                                            email = account.email ?: "email desconocido",
+                                            provider = ProviderType.GOOGLE,
+                                            maxscore = maxscore
+                                        )
+
+                                        showHome(account.email ?: "", ProviderType.GOOGLE)
+                                    } else {
+                                        Toast.makeText(this, "No se encontró información del usuario.", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+                                .addOnFailureListener { e ->
+                                    Toast.makeText(this, "Error al obtener datos: ${e.message}", Toast.LENGTH_SHORT).show()
+                                }
                         } else {
-                            Toast.makeText(this, "Error al autenticar con Firebase", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Error al iniciar sesión con Google: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                         }
                     }
-                }
             } catch (e: ApiException) {
-                Toast.makeText(this, "Error al obtener cuenta de Google: ${e.statusCode}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Error al intentar iniciar sesión con Google: ${e.message}", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
 
+    private fun saveUserToFirestore(
+        userId: String,
+        username: String,
+        email: String,
+        provider: ProviderType
+    ) {
+        val userRef = FirebaseFirestore.getInstance().collection("users").document(userId)
+
+        userRef.get().addOnSuccessListener { document ->
+            if (!document.exists()) {
+                // Si el usuario no existe, lo creamos con maxscore inicial en 0
+                val userMap = mapOf(
+                    "username" to username,
+                    "email" to email,
+                    "provider" to provider.name,
+                    "maxscore" to 0  // Valor inicial de la puntuación
+                )
+
+                userRef.set(userMap)
+                    .addOnSuccessListener {
+                        Log.d("Firestore", "Usuario guardado correctamente.")
+                    }
+                    .addOnFailureListener { e ->
+                        Log.e("Firestore", "Error al guardar usuario: ${e.message}")
+                    }
+            }
+        }.addOnFailureListener { e ->
+            Log.e("Firestore", "Error al comprobar usuario: ${e.message}")
+        }
+    }
 
 
     private fun showHome(email: String, provider: ProviderType) {

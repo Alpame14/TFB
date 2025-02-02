@@ -8,6 +8,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
 import com.example.tfb.databinding.ActivityCuentaBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
@@ -22,31 +23,46 @@ class Cuenta : AppCompatActivity() {
         binding = ActivityCuentaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Inicializar StorageFoto y pasar el contexto y el ImageView
         storageFoto = StorageFoto(this, binding.imageView)
 
-        // Manejar el diseño
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        // Mostrar información del usuario
-        binding.usuariotxt.text = Usuario.currentUsuario?.nombre ?: ""
-        binding.emailtxt.text = Usuario.currentUsuario?.email ?: ""
-        binding.scoretxt.text = Usuario.currentUsuario?.maxscore?.toString() ?: ""
+        val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
+        val email = prefs.getString("email", "") ?: ""
+        val nombre = prefs.getString("nombre", "Usuario") ?: "Usuario"
+        val maxscore = prefs.getInt("maxscore", 0)  // 🔹 Cargar maxscore de SharedPreferences
+        val fotoUrl = prefs.getString("foto", "")  // Recuperar la URL de la foto
+
+// Mostrar la foto en el ImageView si existe
+        if (!fotoUrl.isNullOrEmpty()) {
+            Glide.with(this)  // Usando Glide para cargar la imagen
+                .load(fotoUrl)
+                .into(binding.imageView)
+        }
+        // 🔹 Mostrar datos en la UI
+        binding.usuariotxt.text = nombre
+        binding.emailtxt.text = email
+        binding.scoretxt.text = maxscore.toString()
+
+        // 🔹 También actualizar Usuario.currentUsuario si es nulo
+        if (Usuario.currentUsuario == null) {
+            Usuario.currentUsuario = Usuario.crearUsuario(nombre, email, Enumerados.ProviderType.BASIC, maxscore)
+        }
 
         // Botón de cerrar sesión
         binding.logoutbtn.setOnClickListener {
             cerrarSesion()
         }
 
-        // Al hacer clic en el ImageView, abre la galería
         binding.imageView.setOnClickListener {
             storageFoto.abrirGaleria(this)
         }
     }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

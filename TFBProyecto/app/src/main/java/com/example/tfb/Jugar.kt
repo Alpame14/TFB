@@ -14,6 +14,7 @@ import com.example.tfb.AdapterCom.ComidaProvider
 import com.example.tfb.AdapterCom.JuegoAdapter
 import com.example.tfb.databinding.ActivityJugarBinding
 import com.example.tfb.Enumerados.*
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlin.math.roundToInt
@@ -74,7 +75,7 @@ class Jugar : AppCompatActivity() {
                 multi = 0.0
 
                 platosMap.clear()
-                platosMap.addAll(ComidaProvider.listaComida.shuffled().take(10))
+                platosMap.addAll(ComidaProvider.listaComida.shuffled().take(14))
                 adapter.notifyDataSetChanged()
             } else {
                 Toast.makeText(this, "Debes llenar todos los platos y la bebida", Toast.LENGTH_SHORT).show()
@@ -123,19 +124,25 @@ class Jugar : AppCompatActivity() {
             return true
         }
 
-        if (pivot.alergeno?.toString() == binding.tvAlergiaPers.text.toString()) {
-            puntuacion = 0.0
-            mostrarGameOver()
-            return false
-        }
+        val alergiaUsuario = binding.tvAlergiaPers.text.toString()
+        val dietaUsuario = binding.tvDietaPers.text.toString()
 
-        if ((binding.tvDietaPers.text.toString() == Dietas.Vegano.toString() &&
+        // Comprobación de alérgenos
+        if (!pivot.alergeno.equals(Alergeno.Ninguno)){
+            if (pivot.alergeno?.toString() == alergiaUsuario) {
+                puntuacion = 0.0
+                mostrarGameOver("Alérgeno: ${pivot.nombre} contiene ${pivot.alergeno}")
+                return false
+            }
+        }
+        // Comprobación de dieta
+        if ((dietaUsuario == Dietas.Vegano.toString() &&
                     (pivot.categoria == Categoria.Animal || pivot.categoria == Categoria.Lacteo)) ||
-            (binding.tvDietaPers.text.toString() == Dietas.Vegetariano.toString() &&
+            (dietaUsuario == Dietas.Vegetariano.toString() &&
                     pivot.categoria == Categoria.Animal)
         ) {
             puntuacion = 0.0
-            mostrarGameOver()
+            mostrarGameOver("Dieta: ${pivot.nombre} no es compatible con la dieta $dietaUsuario")
             return false
         }
 
@@ -145,11 +152,11 @@ class Jugar : AppCompatActivity() {
         return true
     }
 
-    private fun mostrarGameOver() {
+    private fun mostrarGameOver(motivo: String) {
         countDownTimer?.cancel() // ✅ Detener el temporizador si el jugador pierde
         AlertDialog.Builder(this@Jugar)
             .setTitle("¡Perdiste!")
-            .setMessage("Has fallado en alérgenos o dieta. Puntuación: 0")
+            .setMessage("$motivo\nPuntuación: 0")
             .setPositiveButton("Volver a jugar") { _, _ ->
                 reiniciarJuego()
             }
@@ -159,11 +166,12 @@ class Jugar : AppCompatActivity() {
     }
 
 
+
     private fun juego(platos: List<ImageView>) {
         generaCliente()
         iniciaRecycler()
 
-        platosMap = ComidaProvider.listaComida.shuffled().take(12).toMutableList()
+        platosMap = ComidaProvider.listaComida.shuffled().take(14).toMutableList()
         adapter = JuegoAdapter(platosMap) { comida ->
             if (comida.bebida == true) {
                 // ✅ Verifica si hay espacio para la bebida antes de agregarla
@@ -307,6 +315,32 @@ class Jugar : AppCompatActivity() {
                 binding.enviarbtn.alpha = 0.5f
 
                 val usuario = Usuario.currentUsuario?.nombre.toString()
+                val userId = FirebaseAuth.getInstance().currentUser?.uid
+
+                if (userId != null) {
+                    val userRef = FirebaseFirestore.getInstance().collection("users").document(userId)
+
+                    userRef.get().addOnSuccessListener { document ->
+                        if (document.exists()) {
+                            val maxScoreActual = document.getLong("maxscore")?.toInt() ?: 0
+
+                            if (puntuacion > maxScoreActual) {
+                                // Si la nueva puntuación es mayor, la actualizamos en Firebase
+                                userRef.update("maxscore", puntuacion)
+                                    .addOnSuccessListener {
+                                        Log.d("Firestore", "Puntuación actualizada correctamente.")
+                                        Usuario.currentUsuario?.maxscore = puntuacion.toInt()  // Actualizar en la app también
+                                    }
+                                    .addOnFailureListener { e ->
+                                        Log.e("Firestore", "Error al actualizar puntuación: ${e.message}")
+                                    }
+                            }
+                        }
+                    }.addOnFailureListener { e ->
+                        Log.e("Firestore", "Error al obtener maxscore: ${e.message}")
+                    }
+                }
+
                 AlertDialog.Builder(this@Jugar)
                     .setTitle("Juego terminado")
                     .setMessage("Usuario: $usuario\nPuntuación: $puntuacion")
@@ -314,6 +348,7 @@ class Jugar : AppCompatActivity() {
                     .setNegativeButton("Volver al menú") { _, _ -> finish() }
                     .setCancelable(false)
                     .show()
+
             }
         }.start()
     }
